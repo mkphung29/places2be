@@ -19,7 +19,7 @@ const Page = () => {
         if (user) router.replace('(main)/Index'); 
       } else {
         const user = await createUserWithEmailAndPassword(auth, email, password);
-        if (user) router.replace('/'); 
+        if (user) router.replace('/CreateProfile'); 
       }
     } catch (error) {
       Alert.alert('Authentication Error', error.message);
