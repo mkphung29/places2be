@@ -1,10 +1,10 @@
 import React from 'react';
 import { Image, StyleSheet, Platform, View, Text } from 'react-native';
 
-const place = () => {
+const Place = () => {
   return (
     <div>place</div>
   )
 }
 
-export default place
+export default Place
