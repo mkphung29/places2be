@@ -10,7 +10,7 @@ const loadFonts = async () => {
 };
 
 // Main Place Component
-const Place = ({ locationName, photoUrl, description, reviews, nextPhotoUrl, prevPhotoUrl }) => {
+const Place = ({ locationName, photoUrls, description, reviews }) => {
   const handleLikePress = () => {
     console.log('Liked!');
     //CHANGE THIS TO IMPLEMENT THE LIKE FUNCTION
@@ -18,21 +18,22 @@ const Place = ({ locationName, photoUrl, description, reviews, nextPhotoUrl, pre
 
   const handleSavePress = () => {
     console.log('Saved!');
-    //CHANGE THIS TO IMPLEMENT THE LIKE FUNCTION
+    //CHANGE THIS TO IMPLEMENT THE SAVE FUNCTION
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <View style={styles.container}>
-        <Header text={locationName} onSavePress={handleSavePress} />
-        <PlacePhoto photoUrl={photoUrl} nextPhotoUrl={nextPhotoUrl} prevPhotoUrl={prevPhotoUrl} />
+    <View style={styles.container}>
+      <Header text={locationName} onSavePress={handleSavePress} />
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <PlacePhoto photoUrls={photoUrls} />
         <PlaceDescription description={description} />
         <Header text="Comments" />
         {reviews.map((review, index) => (
           <PlaceReview key={index} review={review} onLikePress={handleLikePress} />
         ))}
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
+    
   );
 };
 
@@ -51,17 +52,13 @@ const Header = ({ text, onSavePress }) => (
   </View>
 );
 
-// PlacePhoto Component with overlapping next/previous photos
-const PlacePhoto = ({ photoUrl, nextPhotoUrl, prevPhotoUrl }) => (
-  <View style={styles.photoContainer}>
-    {prevPhotoUrl && (
-      <Image source={{ uri: prevPhotoUrl }} style={styles.prevPhoto} />
-    )}
-    <Image source={{ uri: photoUrl }} style={styles.placePhoto} />
-    {nextPhotoUrl && (
-      <Image source={{ uri: nextPhotoUrl }} style={styles.nextPhoto} />
-    )}
-  </View>
+// PlacePhoto Component with horizontal scroll
+const PlacePhoto = ({ photoUrls }) => (
+  <ScrollView horizontal pagingEnabled style={styles.photoContainer}>
+    {photoUrls.map((url, index) => (
+      <Image key={index} source={{ uri: url }} style={styles.placePhoto} />
+    ))}
+  </ScrollView>
 );
 
 // PlaceDescription Component
@@ -93,13 +90,13 @@ const PlaceReview = ({ review, profilePicUrl, onLikePress }) => {
 // Styles
 const styles = StyleSheet.create({
   scrollContainer: {
-    flexGrow: 1,
-    padding: 16,
+    flexGrow: 0,
+    padding: 0,
     backgroundColor: '#fff',
   },
   container: {
     flex: 1,
-    padding: 16,
+    padding: 0,
     backgroundColor: '#ffffff',
   },
   headerContainer: {
@@ -108,9 +105,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#d9d9d9',
     marginTop: 0,
-    marginBottom: 10,
+    marginBottom: 0,
     paddingVertical: 10,
-    marginHorizontal: -40,
+    marginHorizontal: 0,
     position: 'relative',
   },
   headerText: {
@@ -121,52 +118,34 @@ const styles = StyleSheet.create({
   saveButtonContainer: {
     position: 'absolute',
     right: 0,
-    paddingRight: 16,
+    paddingRight: 32,
   },
   saveButton: {
     width: 30,
     height: 30,
   },
   photoContainer: {
-    position: 'relative',
-    overflow: 'visible', 
-    alignItems: 'flex-start',
+    width: '100%',
+    height: 300,
+    padding: 16,
   },
   placePhoto: {
-    width: '100%',
-    height: 300,
+    width: 300,  // Set width for each photo
+    height: '100%',
     borderRadius: 10,
-    marginVertical: 10,
-  },
-  nextPhoto: {
-    position: 'absolute',
-    right: -350, // Adjust as needed
-    width: '100%',
-    height: 300,
-    borderRadius: 10,
-    marginVertical: 10,
-    zIndex: -1,
-  },
-  prevPhoto: {
-    position: 'absolute',
-    left: -350, // Adjust as needed
-    width: '100%',
-    height: 300,
-    borderRadius: 10,
-    marginVertical: 10,
-    zIndex: -1,
+    marginRight: 10,
   },
   placeDescriptionText: {
     fontFamily: 'Bricolage',
     fontSize: 17,
     textAlign: 'left',
     width: '100%',
-    marginVertical: 10,
+    padding: 16,
   },
   reviewContainer: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginVertical: 10,
+    padding: 16,
   },
   profilePic: {
     width: 30,
@@ -194,7 +173,7 @@ const styles = StyleSheet.create({
 });
 
 // App Component that loads fonts and renders Place component
-const App = () => {
+const place = () => {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   useEffect(() => {
@@ -208,7 +187,11 @@ const App = () => {
   return (
     <Place 
       locationName="BOBST LIBRARY"
-      photoUrl="https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat"
+      photoUrls={[
+        "https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat",
+        "https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat",
+        "https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat"
+      ]}
       description="The Elmer Holmes Bobst Library, located at New York University (NYU) in Manhattan, serves as a central hub for academic research and study."
       reviews={[
         "Bobst Library has been my second home throughout my time at NYU. The building itself is incredible—imagine studying under a 12-story atrium with a stunning geometric ceiling! The space is so inspiring and keeps you focused. They have endless resources, from rare books to cutting-edge research tools. And if you need a quiet spot, there are multiple silent floors where you can truly get in the zone.",
@@ -216,10 +199,8 @@ const App = () => {
         "Could use more seating.",
         "The library is a must for anyone serious about studying. You have access to millions of books, digital resources, and archives—everything you’d ever need. That said, Bobst is popular, and sometimes it’s hard to find a good seat, especially during finals. The views from the upper floors of Washington Square Park are a big plus!",
       ]}
-      nextPhotoUrl="https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat"
-      prevPhotoUrl="https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat"
     />
   );
 };
 
-export default App;
+export default place;
