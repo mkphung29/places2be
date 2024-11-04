@@ -13,7 +13,6 @@ const CreateProfile = () => {
       const user = FIREBASE_AUTH.currentUser;
 
       if (user) {
-        // Assuming you have a collection called 'users'
         await firestore.collection('users').doc(user.uid).set({
           firstName,
           lastName,
