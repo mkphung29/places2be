@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet, KeyboardAvoidingView, Platform, ActivityIndicator, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState } from 'react';
 import { FIREBASE_AUTH } from '../../FirebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
@@ -28,78 +29,106 @@ const Page = () => {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={styles.container}
-      keyboardVerticalOffset={1}
-    >
-      {loading && <ActivityIndicator size='large' color='#0000ff' />}
-
-      <Text style={styles.title}>{isLogin ? 'Welcome Back' : 'Create Your Account'}</Text>
-
-      <TextInput
-        autoCapitalize='none'
-        placeholder='Email'
-        style={styles.inputField}
-        value={email}
-        onChangeText={setEmail}
-      />
-      <TextInput
-        autoCapitalize='none'
-        placeholder='Password'
-        style={styles.inputField}
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-
-      <TouchableOpacity onPress={handleAuth} style={styles.btnPrimary}>
-        <Text style={styles.btnPrimaryText}>{isLogin ? 'Login' : 'Sign Up'}</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => setIsLogin(!isLogin)}>
-        <Text style={styles.toggleText}>
-          {isLogin ? 'Need an account? Sign Up' : 'Already have an account? Login'}
-        </Text>
-      </TouchableOpacity>
-    </KeyboardAvoidingView>
+    <View style={[styles.container, { backgroundColor: '#A8E6CF' }]}>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.header}>
+          <TouchableOpacity style={styles.backButton}></TouchableOpacity>
+        </View>
+        <View>
+          {/* Insert picture here */}
+        </View>
+      </SafeAreaView>
+      
+      <View style={styles.formContainer}>
+        <View style={styles.form}>
+          <Text style={styles.label}>Email Address</Text>
+          <TextInput 
+            style={styles.input}
+            value={email}
+            placeholder="Enter Email"
+            onChangeText={setEmail}
+          />
+          <Text style={styles.label}>Password</Text>
+          <TextInput 
+            style={styles.input}
+            secureTextEntry
+            value={password}
+            placeholder="Enter Password"
+            onChangeText={setPassword}
+          />
+          <TouchableOpacity style={styles.forgotPasswordButton}>
+            <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.authButton} onPress={handleAuth}>
+            <Text style={styles.authButtonText}>
+              {isLogin ? 'Login' : 'Sign Up'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
   },
-  title: {
-    fontSize: 30,
-    alignSelf: 'center',
+  safeArea: {
+    flex: 1,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    padding: 10,
+  },
+  backButton: {
+    backgroundColor: '#FBBF24',
+    padding: 8,
+    borderTopRightRadius: 16,
+    borderBottomLeftRadius: 16,
+    marginLeft: 16,
+  },
+  formContainer: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    paddingHorizontal: 32,
+    paddingTop: 32,
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+  },
+  form: {
+    flex: 1,
+  },
+  label: {
+    color: '#4B5563', // gray-700
+    marginLeft: 16,
+    marginBottom: 4,
+  },
+  input: {
+    padding: 12,
+    backgroundColor: '#F3F4F6', // gray-100
+    color: '#4B5563', // gray-700
+    borderRadius: 16,
+    marginBottom: 12,
+  },
+  forgotPasswordButton: {
+    alignItems: 'flex-end',
+    marginBottom: 20,
+  },
+  forgotPasswordText: {
+    color: '#4B5563', // gray-700
+  },
+  authButton: {
+    paddingVertical: 12,
+    backgroundColor: '#FBBF24', // yellow-400
+    borderRadius: 16,
+  },
+  authButtonText: {
+    fontSize: 18,
     fontWeight: 'bold',
-  },
-  inputField: {
-    marginVertical: 4,
-    height: 50,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 12,
-    padding: 10,
-    backgroundColor: '#fff',
-  },
-  btnPrimary: {
-    backgroundColor: "#007bff",
-    marginVertical: 4,
-    padding: 10,
-    alignItems: 'center',
-    borderRadius: 8,
-  },
-  btnPrimaryText: {
-    color: '#fff',
-    fontSize: 16,
-  },
-  toggleText: {
-    color: '#007bff',
+    color: '#4B5563', // gray-700
     textAlign: 'center',
-    marginTop: 10,
   },
 });
 
