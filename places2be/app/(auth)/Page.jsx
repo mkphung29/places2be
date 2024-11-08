@@ -29,7 +29,7 @@ const Page = () => {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: '#A8E6CF' }]}>
+    <View style={[styles.container, { backgroundColor: '#D1C4E9' }]}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <TouchableOpacity style={styles.backButton}></TouchableOpacity>
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   backButton: {
-    backgroundColor: '#FBBF24',
+    backgroundColor: '#FFDAB9',
     padding: 8,
     borderTopRightRadius: 16,
     borderBottomLeftRadius: 16,
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
   authButton: {
     paddingVertical: 12,
-    backgroundColor: '#FBBF24', // yellow-400
+    backgroundColor: '#FFDAB9', // yellow-400
     borderRadius: 16,
   },
   authButtonText: {

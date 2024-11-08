@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import { FIREBASE_AUTH, firestore } from '../../FirebaseConfig'; 
 
 const CreateProfile = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [bio, setBio] = useState('');
+    const [email, setEmail] = useState('');
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
 
   const handleSubmit = async () => {
     // Add your logic to save the profile to the database
@@ -14,9 +14,8 @@ const CreateProfile = () => {
 
       if (user) {
         await firestore.collection('users').doc(user.uid).set({
-          firstName,
-          lastName,
-          bio,
+          userName,
+          password
         });
 
         Alert.alert('Profile Created', 'Your profile has been created successfully!');
@@ -29,29 +28,34 @@ const CreateProfile = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: '#D1C4E9' }]}>
       <Text style={styles.title}>Create Your Profile</Text>
       <TextInput
-        placeholder="First Name"
-        value={firstName}
-        onChangeText={setFirstName}
+        placeholder="email address"
+        value={email}
+        onChangeText={setEmail}
         style={styles.inputField}
       />
       <TextInput
-        placeholder="Last Name"
-        value={lastName}
-        onChangeText={setLastName}
+        placeholder="username"
+        value={userName}
+        onChangeText={setUserName}
         style={styles.inputField}
       />
       <TextInput
-        placeholder="Bio"
-        value={bio}
-        onChangeText={setBio}
+        placeholder="password"
+        value={password}
+        onChangeText={setPassword}
         style={styles.inputField}
-        multiline
+      />
+      <TextInput
+        placeholder="confirm password"
+        value={password}
+        onChangeText={setPassword}
+        style={styles.inputField}
       />
       <TouchableOpacity onPress={handleSubmit} style={styles.button}>
-        <Text style={styles.buttonText}>Create Profile</Text>
+        <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
     </View>
   );
@@ -69,6 +73,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
+    color: '#374151'
   },
   inputField: {
     height: 50,
@@ -80,13 +85,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   button: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#FFDAB9',
     padding: 15,
     borderRadius: 8,
     alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',
+    color: '#374151',
     fontSize: 16,
   },
 });

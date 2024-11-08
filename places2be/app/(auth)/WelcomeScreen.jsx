@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function WelcomeScreen() {
   return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: '#A8E6CF' }]}>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: '#D1C4E9' }]}>
       <View style={styles.mainContainer}>
         <Text style={styles.titleText}>
           Let's Get Started!
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   titleText: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 32, // equivalent to Tailwind's text-4xl
+    fontSize: 32, 
     textAlign: 'center',
   },
   buttonContainer: {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   signUpButton: {
     paddingVertical: 12,
-    backgroundColor: '#FFDAB9', // yellow-400 #F8C1BF
+    backgroundColor: '#FFDAB9', // 
     marginHorizontal: 28,
     borderRadius: 10,
   },
