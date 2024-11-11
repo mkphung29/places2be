@@ -14,6 +14,7 @@ export default function Layout() {
       <Stack.Screen name="(main)/Profile" options={{ title: "Profile" }} />
       <Stack.Screen name="(main)/UserProfile" options={{ title: "User Profile" }} />
       <Stack.Screen name="(main)/Place" options={{ title: "Place" }} />
+      <Stack.Screen name="(main)/Place/:locationName" options={{ title: "Place" }} />
     </Stack>
   );
 }

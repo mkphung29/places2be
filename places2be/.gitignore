@@ -11,7 +11,7 @@ npm-debug.*
 web-build/
 package.json
 package-lock.json
-FirebaseConfig.jsx
+.env
 
 
 # macOS

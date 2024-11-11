@@ -1,27 +1,37 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import React, { useState } from 'react';
-import { FIREBASE_AUTH, firestore } from '../../FirebaseConfig'; 
+import { FIREBASE_AUTH, firestore } from '../../FirebaseConfig';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 const CreateProfile = () => {
-    const [email, setEmail] = useState('');
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
+  const auth = getAuth();  // Firebase Authentication instance
+  const db = getFirestore(); // Firestore instance
+
+  const [email, setEmail] = useState('');
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSubmit = async () => {
-    // Add your logic to save the profile to the database
+    if (password !== confirmPassword) {
+      Alert.alert('Error', 'Passwords do not match');
+      return;
+    }
+
     try {
-      const user = FIREBASE_AUTH.currentUser;
+      // Create a new user with email and password
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-      if (user) {
-        await firestore.collection('users').doc(user.uid).set({
-          userName,
-          password
-        });
+      // Save additional user information to Firestore
+      await setDoc(doc(db, 'users', user.uid), {
+        userName: userName,
+        email: email,
+        places: [] // Initialize with an empty array for places
+      });
 
-        Alert.alert('Profile Created', 'Your profile has been created successfully!');
-      } else {
-        Alert.alert('Error', 'User not authenticated. Please log in.');
-      }
+      Alert.alert('Success', 'Profile created successfully!');
     } catch (error) {
       Alert.alert('Error', error.message);
     }
@@ -35,6 +45,7 @@ const CreateProfile = () => {
         value={email}
         onChangeText={setEmail}
         style={styles.inputField}
+        keyboardType="email-address"
       />
       <TextInput
         placeholder="username"
@@ -47,12 +58,14 @@ const CreateProfile = () => {
         value={password}
         onChangeText={setPassword}
         style={styles.inputField}
+        secureTextEntry
       />
       <TextInput
         placeholder="confirm password"
-        value={password}
-        onChangeText={setPassword}
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
         style={styles.inputField}
+        secureTextEntry
       />
       <TouchableOpacity onPress={handleSubmit} style={styles.button}>
         <Text style={styles.buttonText}>Sign Up</Text>
