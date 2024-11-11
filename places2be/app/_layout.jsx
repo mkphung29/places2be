@@ -4,6 +4,7 @@ export default function Layout() {
   return (
     <Stack>
       {/* Auth screens */}
+      <Stack.Screen name="(auth)/index" options={{ title: "Welcome" }} />
       <Stack.Screen name="(auth)/Page" options={{ title: "Sign In or Sign Up" }} />
       <Stack.Screen name="(auth)/CreateProfile" options={{ title: "Create Profile" }} />
 
