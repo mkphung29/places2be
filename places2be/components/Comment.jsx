@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import * as Font from 'expo-font';
-import { ScrollView, Image, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 const Comment = ({ review, profilePicUrl, onLikePress }) => {
   const defaultProfilePicUrl = require('../../places2be/assets/images/defaultPFP.png');
   const likeButtonUrl = require('../../places2be/assets/images/like.png');
 
   return (
-    <View style={styles.reviewContainer}>
+    <View style = {styles.outerContainer}>
+    <View style={styles.innerContainer}>
       <Image 
         source={profilePicUrl ? { uri: profilePicUrl } : defaultProfilePicUrl}
         style={styles.profilePic} 
@@ -19,15 +20,26 @@ const Comment = ({ review, profilePicUrl, onLikePress }) => {
         </TouchableOpacity>
       </View>
     </View>
+    </View>
   );
 };
 
 
 const styles = StyleSheet.create({
-    reviewContainer: {
+    innerContainer: {
       flexDirection: 'row',
       alignItems: 'flex-start',
       padding: 16,
+      backgroundColor: 'white',
+      borderRadius: 16,
+      borderColor: 'black',
+      borderWidth: 1,
+    },
+    outerContainer: {
+      paddingBottom: 10,
+      paddingLeft: 10,
+      paddingRight: 10,
+
     },
     profilePic: {
       width: 30,

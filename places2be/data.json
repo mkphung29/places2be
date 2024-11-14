@@ -1,0 +1,98 @@
+[
+  {
+    "placeName": "Bobst",
+    "photoUrls": [
+      "https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat",
+      "https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat",
+      "https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat"
+    ],
+    "description": "The Elmer Holmes Bobst Library, located at New York University (NYU) in Manhattan, serves as a central hub for academic research and study.",
+    "reviews": [
+      "Bobst Library has been my second home throughout my time at NYU. The building itself is incredible—imagine studying under a 12-story atrium with a stunning geometric ceiling! The space is so inspiring and keeps you focused. They have endless resources, from rare books to cutting-edge research tools. And if you need a quiet spot, there are multiple silent floors where you can truly get in the zone.",
+      "Love the atmosphere.",
+      "Could use more seating.",
+      "The library is a must for anyone serious about studying. You have access to millions of books, digital resources, and archives—everything you’d ever need. That said, Bobst is popular, and sometimes it’s hard to find a good seat, especially during finals. The views from the upper floors of Washington Square Park are a big plus!"
+    ],
+    "address": "70 Washington Square S, New York, NY 10012"
+  },
+  {
+    "placeName": "Bobst-6th",
+    "photoUrls": [
+      "https://example.com/bobst-6th-floor-1.jpg",
+      "https://example.com/bobst-6th-floor-2.jpg",
+      "https://example.com/bobst-6th-floor-3.jpg"
+    ],
+    "description": "The 6th floor of Bobst Library is known for being a quieter and more private space, perfect for those looking for a calm environment to study or do focused work.",
+    "reviews": [
+      "The 6th floor is perfect for studying in peace. There are plenty of desks and minimal distractions.",
+      "Great place to focus without the noise from other floors.",
+      "The environment here is ideal for those looking for a quiet study space during the day or night.",
+      "Love the natural light and quiet ambiance."
+    ],
+    "address": "70 Washington Square S, New York, NY 10012"
+  },
+  {
+    "placeName": "Kimmel",
+    "photoUrls": [
+      "https://example.com/kimmel-1.jpg",
+      "https://example.com/kimmel-2.jpg",
+      "https://example.com/kimmel-3.jpg"
+    ],
+    "description": "The Kimmel Center is a great spot for group study sessions, with a variety of lounges and study rooms available for students.",
+    "reviews": [
+      "Love the vibe here, it's perfect for group study. Lots of seating and places to plug in your devices.",
+      "Great place to take breaks in between studying. The cafeteria is nearby, which makes it convenient.",
+      "There’s a great atmosphere here for collaboration and teamwork.",
+      "The lounge areas provide a comfortable space for casual studying and group discussions."
+    ],
+    "address": "60 Washington Square S, New York, NY 10012"
+  },
+  {
+    "placeName": "SRC",
+    "photoUrls": [
+      "https://example.com/the-study-1.jpg",
+      "https://example.com/the-study-2.jpg",
+      "https://example.com/the-study-3.jpg"
+    ],
+    "description": "A quiet, secluded spot for individual study located in the Student Resource Center, with comfy chairs and a peaceful atmosphere.",
+    "reviews": [
+      "A hidden gem for serious studying. I love the peace and quiet here.",
+      "Perfect spot for focused work or reading. I appreciate the calming environment.",
+      "The space is always clean and quiet, making it one of my top spots for studying on campus.",
+      "Great for when you need a distraction-free environment."
+    ],
+    "address": "383 Lafayette St, New York, NY 10003"
+  },
+  {
+    "placeName": "Loft",
+    "photoUrls": [
+      "https://example.com/tisch-loft-1.jpg",
+      "https://example.com/tisch-loft-2.jpg",
+      "https://example.com/tisch-loft-3.jpg"
+    ],
+    "description": "The Loft is a creative space at NYU Tisch School of the Arts where students can work on artistic projects or study in a more informal, yet inspiring environment.",
+    "reviews": [
+      "Amazing place for creative brainstorming and working on projects.",
+      "The relaxed environment makes studying here feel less like a chore.",
+      "Perfect mix of a collaborative atmosphere and personal study space.",
+      "Great for group work or individual projects that require creative space."
+    ],
+    "address": "721 Broadway, New York, NY 10003"
+  },
+  {
+    "placeName": "Cafe7",
+    "photoUrls": [
+      "https://example.com/cafe-7-1.jpg",
+      "https://example.com/cafe-7-2.jpg",
+      "https://example.com/cafe-7-3.jpg"
+    ],
+    "description": "Cafe 7, located in the heart of NYU’s campus, is the perfect place for a casual study session with coffee and snacks readily available.",
+    "reviews": [
+      "Great place to grab coffee and get some studying done. The Wi-Fi is fast and the atmosphere is lively.",
+      "Nice mix of energy and focus. Not too quiet but not too loud either.",
+      "I love working here. The food is good, and the coffee keeps me going during long study sessions.",
+      "Perfect for a quick break from studying or a more casual study session."
+    ],
+    "address": "7 Washington Square East, New York, NY 10003"
+  }
+]
