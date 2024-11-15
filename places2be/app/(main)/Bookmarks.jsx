@@ -21,9 +21,19 @@ const Bookmarks = ({ places }) => {
   );
 };
 
+<<<<<<< HEAD
+const Bookmarks = () => {
+  return (
+    <div>bookmarks</div>
+  )
+}
+
+export default Bookmarks
+=======
 const bookmarks = () => {
   // Pass the imported placeData to Bookmarks component
   return <Bookmarks places={placeData} />;
 };
 
 export default bookmarks;
+>>>>>>> chase

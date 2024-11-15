@@ -7,6 +7,15 @@ import HorizontalCarousel from '../../components/HorizontalCarousel.jsx';
 import FullScreenText from '../../components/FullScreenText.jsx';
 import ColorBlock from '../../components/ColorBlock.jsx';
 
+<<<<<<< HEAD
+const Place = () => {
+  return (
+    <div>place</div>
+  )
+}
+
+export default Place
+=======
 const Place = ({ placeName, photoUrls, description, reviews }) => {
     return (
       <View style = {{backgroundColor: '#D1C4E9'}}>
@@ -29,3 +38,4 @@ const Place = ({ placeName, photoUrls, description, reviews }) => {
    };
    
 export default Place;
+>>>>>>> chase
