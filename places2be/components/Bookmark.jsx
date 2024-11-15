@@ -2,18 +2,18 @@ import React from 'react';
 import { TouchableOpacity, Image, StyleSheet, View, Text } from 'react-native';
 import { useRouter } from 'expo-router';
 
-const Bookmark = ({ placeName, photoUrls }) => {
+const Bookmark = ({ placeName, photoUrls, objectId }) => {
   const router = useRouter();
 
   return (
     <TouchableOpacity
       onPress={() => {
         // Navigate to the dynamic Place page
-        router.push(`/Place/${placeName}`);
+        router.push(`/Place/${objectId}`);
       }}
     >
       <View style={styles.bookmarkContainer}>
-        <Image source={{ uri: photoUrls[0] }} style={styles.placePhoto} />
+        <Image source = {{ uri: photoUrls[0] }} style={styles.placePhoto} />
         <Text style={styles.locationText}>{placeName}</Text>
       </View>
     </TouchableOpacity>

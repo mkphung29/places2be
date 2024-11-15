@@ -12,8 +12,8 @@ const Bookmarks = ({ places }) => {
       <Header text={"Bookmarks"} includeBack={true}/>
       <ScrollView>
         <ColorBlock height={10} />
-        {places.map(({ placeName, photoUrl }, index) => (
-          <Bookmark key={index} placeName={placeName} photoUrls={[photoUrl]} />
+        {places.map(({ placeName, photoUrls, objectId }, index) => (
+          <Bookmark key={index} placeName={placeName} photoUrls={photoUrls} objectId = {objectId} />
         ))}
         <ColorBlock height={130} />
       </ScrollView>

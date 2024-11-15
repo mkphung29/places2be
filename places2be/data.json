@@ -1,6 +1,7 @@
 [
   {
-    "placeName": "Bobst",
+    "objectId" : "0",
+    "placeName": "Bobst Library",
     "photoUrls": [
       "https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat",
       "https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat",
@@ -16,7 +17,8 @@
     "address": "70 Washington Square S, New York, NY 10012"
   },
   {
-    "placeName": "Bobst-6th",
+    "objectId" : "1",
+    "placeName": "Bobst: 6th Floor",
     "photoUrls": [
       "https://example.com/bobst-6th-floor-1.jpg",
       "https://example.com/bobst-6th-floor-2.jpg",
@@ -32,6 +34,7 @@
     "address": "70 Washington Square S, New York, NY 10012"
   },
   {
+    "objectId" : "2",
     "placeName": "Kimmel",
     "photoUrls": [
       "https://example.com/kimmel-1.jpg",
@@ -48,6 +51,7 @@
     "address": "60 Washington Square S, New York, NY 10012"
   },
   {
+    "objectId" : "3",
     "placeName": "SRC",
     "photoUrls": [
       "https://example.com/the-study-1.jpg",
@@ -64,6 +68,7 @@
     "address": "383 Lafayette St, New York, NY 10003"
   },
   {
+    "objectId" : "4",
     "placeName": "Loft",
     "photoUrls": [
       "https://example.com/tisch-loft-1.jpg",
@@ -80,6 +85,7 @@
     "address": "721 Broadway, New York, NY 10003"
   },
   {
+    "objectId" : "5",
     "placeName": "Cafe7",
     "photoUrls": [
       "https://example.com/cafe-7-1.jpg",
