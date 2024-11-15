@@ -1,19 +1,21 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import React, { useState } from 'react';
-import { FIREBASE_AUTH, firestore } from '../../FirebaseConfig';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
 const CreateProfile = () => {
-  const auth = getAuth();  // Firebase Authentication instance
-  const db = getFirestore(); // Firestore instance
-
+/*
+  const auth = getAuth();  
+  const db = getFirestore(); 
+*/
   const [email, setEmail] = useState('');
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSubmit = async () => {
+    console.log("submitted");
+    /*
     if (password !== confirmPassword) {
       Alert.alert('Error', 'Passwords do not match');
       return;
@@ -33,39 +35,46 @@ const CreateProfile = () => {
 
       Alert.alert('Success', 'Profile created successfully!');
     } catch (error) {
-      Alert.alert('Error', error.message);
-    }
+      // Check for specific error codes and handle accordingly
+      if (error.code === 'auth/email-already-in-use') {
+        Alert.alert('Error', 'This email is already in use.');
+      } else if (error.code === 'auth/invalid-email') {
+        Alert.alert('Error', 'Invalid email address.');
+      } else if (error.code === 'auth/weak-password') {
+        Alert.alert('Error', 'Password is too weak.');
+      } else {
+        Alert.alert('Error', error.message);
+      }
+    }*/
   };
 
   return (
     <View style={[styles.container, { backgroundColor: '#D1C4E9' }]}>
       <Text style={styles.title}>Create Your Profile</Text>
       <TextInput
-        placeholder="email address"
+        placeholder="Email Address"
         value={email}
         onChangeText={setEmail}
         style={styles.inputField}
         keyboardType="email-address"
       />
       <TextInput
-        placeholder="username"
+        placeholder="Username"
         value={userName}
         onChangeText={setUserName}
         style={styles.inputField}
       />
       <TextInput
-        placeholder="password"
+        placeholder="Password"
         value={password}
         onChangeText={setPassword}
         style={styles.inputField}
-        secureTextEntry
       />
       <TextInput
-        placeholder="confirm password"
+        placeholder="Confirm Password"
         value={confirmPassword}
         onChangeText={setConfirmPassword}
         style={styles.inputField}
-        secureTextEntry
       />
       <TouchableOpacity onPress={handleSubmit} style={styles.button}>
         <Text style={styles.buttonText}>Sign Up</Text>
