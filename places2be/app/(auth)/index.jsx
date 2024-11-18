@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -8,8 +8,12 @@ export default function index() {
     <SafeAreaView style={[styles.safeArea, { backgroundColor: '#D1C4E9' }]}>
       <View style={styles.mainContainer}>
         <Text style={styles.titleText}>Let's Get Started!</Text>
-        <View>
-          {/* Insert Logo here */}
+        <View style={styles.logoContainer}>
+          <Image 
+            source={require('../../assets/images/main-logo.png')} 
+            style={styles.logo}
+            resizeMode="contain"
+          />
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
@@ -31,48 +35,61 @@ export default function index() {
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
-  mainContainer: {
-    flex: 1,
-    justifyContent: 'space-around',
-    marginVertical: 16,
-  },
-  titleText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 32, 
-    textAlign: 'center',
-  },
-  buttonContainer: {
-    marginVertical: 16,
-  },
-  signUpButton: {
-    paddingVertical: 12,
-    backgroundColor: '#FFDAB9', // 
-    marginHorizontal: 28,
-    borderRadius: 10,
-  },
-  signUpButtonText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#374151', // gray-700
-  },
-  loginContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 16,
-  },
-  loginText: {
-    color: 'white',
-    fontWeight: '600',
-  },
-  loginButtonText: {
-    fontWeight: '600',
-    color: '#374151', // yellow-400
-    marginLeft: 4,
-  },
-});
+    safeArea: {
+      flex: 1,
+    },
+    mainContainer: {
+      flex: 1,
+      justifyContent: 'center', // Centers everything closer together vertically
+      alignItems: 'center', // Optional: ensures everything is horizontally centered
+      marginVertical: 16,
+    },
+    titleText: {
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: 32, 
+      textAlign: 'center',
+      marginBottom: 16, // Adds spacing between the title and the logo
+    },
+    logoContainer: {
+      alignItems: 'center', 
+      marginBottom: 32, // Adds spacing between the logo and the buttons
+    },
+    logo: {
+      width: 600, // Reduce size for better alignment
+      height: 400, // Maintain aspect ratio
+    },
+    buttonContainer: {
+      marginVertical: 16,
+      width: '100%', // Ensures buttons are aligned consistently
+      paddingHorizontal: 20, // Optional for padding around buttons
+    },
+    signUpButton: {
+      paddingVertical: 12,
+      backgroundColor: '#FFDAB9',
+      marginHorizontal: 28,
+      borderRadius: 10,
+      marginBottom: 16, // Space between Sign Up and Log In
+    },
+    signUpButtonText: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      color: '#374151',
+    },
+    loginContainer: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+    },
+    loginText: {
+      color: 'white',
+      fontWeight: '600',
+    },
+    loginButtonText: {
+      fontWeight: '600',
+      color: '#374151',
+      marginLeft: 4,
+    },
+  });
+  
 
