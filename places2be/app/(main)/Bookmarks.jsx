@@ -21,7 +21,6 @@ const Bookmarks = ({ places }) => {
   );
 };
 
-
 const bookmarks = () => {
   // Pass the imported placeData to Bookmarks component
   return <Bookmarks places={placeData} />;

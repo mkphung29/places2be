@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState } from 'react';
 import { auth } from '../../FirebaseConfig';
@@ -39,7 +39,8 @@ const Page = () => {
     } catch (error) {
       Alert.alert('Authentication Error', error.message);
     }*/
-    setLoading(false);
+   
+    router.push('/Bookmarks');
   };
 
   return (
@@ -47,7 +48,13 @@ const Page = () => {
       <ColorBlock height={60} />
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton}></TouchableOpacity>
+        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+          <Image 
+            source={require('../../assets/images/backArrow.png')} 
+            style={styles.backArrow} 
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
         </View>
         <View>
           {/* Insert picture here */}
@@ -80,12 +87,7 @@ const Page = () => {
             disabled={loading}
           >
             <Text style={styles.authButtonText}>
-              {loading ? 'Processing...' : isLogin ? 'Login' : 'Sign Up'}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => setIsLogin(!isLogin)}>
-            <Text style={styles.toggleText}>
-              {isLogin ? 'New here? Sign up' : 'Already have an account? Login'}
+              Login
             </Text>
           </TouchableOpacity>
         </View>
@@ -95,29 +97,53 @@ const Page = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  safeArea: { flex: 1 },
-  header: { flexDirection: 'row', justifyContent: 'flex-start', padding: 10 },
-  backButton: {
-    backgroundColor: '#FFDAB9', padding: 8, borderTopRightRadius: 16,
-    borderBottomLeftRadius: 16, marginLeft: 16,
-  },
-  formContainer: {
-    flex: 1, backgroundColor: '#FFFFFF', paddingHorizontal: 32, paddingTop: 32,
-    borderTopLeftRadius: 50, borderTopRightRadius: 50,
-  },
-  form: { flex: 1 },
-  label: { color: '#4B5563', marginLeft: 16, marginBottom: 4 },
-  input: { padding: 12, backgroundColor: '#F3F4F6', color: '#4B5563', borderRadius: 16, marginBottom: 12 },
-  forgotPasswordButton: { alignItems: 'flex-end', marginBottom: 20 },
-  forgotPasswordText: { color: '#4B5563' },
-  authButton: {
-    paddingVertical: 12, backgroundColor: '#FFDAB9', borderRadius: 16,
-  },
-  authButtonText: {
-    fontSize: 18, fontWeight: 'bold', color: '#4B5563', textAlign: 'center',
-  },
-  toggleText: { textAlign: 'center', color: '#4B5563', marginTop: 12 },
-});
+    container: { flex: 1 },
+    safeArea: { flex: 1 },
+    header: { flexDirection: 'row', justifyContent: 'flex-start', padding: 10 },
+    backButton: {
+      backgroundColor: '#FFDAB9',
+      padding: 4, 
+      borderTopRightRadius: 16,
+      borderBottomLeftRadius: 16,
+      marginLeft: 16,
+    },
+    backArrow: {
+      width: 20, 
+      height: 20, 
+    },
+    formContainer: {
+      flex: 1,
+      backgroundColor: '#FFFFFF',
+      paddingHorizontal: 32,
+      paddingTop: 32,
+      borderTopLeftRadius: 50,
+      borderTopRightRadius: 50,
+    },
+    form: { flex: 1 },
+    label: { color: '#4B5563', marginLeft: 16, marginBottom: 4 },
+    input: {
+      padding: 12,
+      backgroundColor: '#F3F4F6',
+      color: '#4B5563',
+      borderRadius: 16,
+      marginBottom: 12,
+    },
+    forgotPasswordButton: { alignItems: 'flex-end', marginBottom: 20 },
+    forgotPasswordText: { color: '#4B5563' },
+    authButton: {
+      paddingVertical: 6, 
+      paddingHorizontal: 16,
+      backgroundColor: '#FFDAB9',
+      borderRadius: 16,
+    },
+    authButtonText: {
+      fontSize: 14, 
+      fontWeight: 'bold',
+      color: '#4B5563',
+      textAlign: 'center',
+    },
+    toggleText: { textAlign: 'center', color: '#4B5563', marginTop: 12 },
+  });
+  
 
 export default Page;

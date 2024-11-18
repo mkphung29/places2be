@@ -1,5 +1,7 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState } from 'react';
+import { router } from 'expo-router'; 
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import ColorBlock from '../../components/ColorBlock.jsx'
@@ -47,57 +49,96 @@ const CreateProfile = () => {
         Alert.alert('Error', error.message);
       }
     }*/
+      router.push('/Bookmarks');
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: '#D1C4E9' }]}>
-      <ColorBlock height={60} />
-      <Text style={styles.title}>Create Your Profile</Text>
-      <TextInput
-        placeholder="Email Address"
-        value={email}
-        onChangeText={setEmail}
-        style={styles.inputField}
-        keyboardType="email-address"
-      />
-      <TextInput
-        placeholder="Username"
-        value={userName}
-        onChangeText={setUserName}
-        style={styles.inputField}
-      />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        style={styles.inputField}
-      />
-      <TextInput
-        placeholder="Confirm Password"
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-        style={styles.inputField}
-      />
-      <TouchableOpacity onPress={handleSubmit} style={styles.button}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.backButtonContainer}>
+        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+          <Image 
+            source={require('../../assets/images/backArrow.png')} 
+            style={styles.backArrow} 
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+      </View>
+
+      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        <View style={styles.formContainer}>
+          <Text style={styles.title}>Create Your Profile</Text>
+          <TextInput
+            placeholder="Email Address"
+            value={email}
+            onChangeText={setEmail}
+            style={styles.inputField}
+            keyboardType="email-address"
+          />
+          <TextInput
+            placeholder="Username"
+            value={userName}
+            onChangeText={setUserName}
+            style={styles.inputField}
+          />
+          <TextInput
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            style={styles.inputField}
+          />
+          <TextInput
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+            style={styles.inputField}
+          />
+          <TouchableOpacity onPress={handleSubmit} style={styles.button}>
+            <Text style={styles.buttonText}>Sign Up</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    justifyContent: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#D1C4E9',
+  },
+  backButtonContainer: {
+    position: 'absolute', 
+    top: 100, 
+    left: 20, 
+    zIndex: 10, 
+  },
+  backButton: {
+    backgroundColor: '#FFDAB9',
+    padding: 4,
+    borderTopRightRadius: 16,
+    borderBottomLeftRadius: 16,
+  },
+  backArrow: {
+    width: 20,
+    height: 20,
+  },
+  scrollViewContainer: {
+    flexGrow: 1,
+    justifyContent: 'center', 
+    padding: 20, 
+  },
+  formContainer: {
+    width: '100%',
+    maxWidth: 400, 
+    alignSelf: 'center', 
+    marginTop: 0, 
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    color: '#374151'
+    color: '#374151',
   },
   inputField: {
     height: 50,
