@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { router } from 'expo-router'; 
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import ColorBlock from '../../components/ColorBlock.jsx'
 
 const CreateProfile = () => {
 /*

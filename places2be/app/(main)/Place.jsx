@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import * as Font from 'expo-font';
-import { ScrollView, Image, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { ScrollView, View } from 'react-native';
 import Comment from '../../components/Comment.jsx';
 import Header from '../../components/Header.jsx';
 import HorizontalCarousel from '../../components/HorizontalCarousel.jsx';
@@ -15,7 +14,7 @@ const Place = ({ placeName, photoUrls, description, reviews }) => {
         <ScrollView>
           <ColorBlock height = {10}></ColorBlock>
           <HorizontalCarousel photoUrls = {photoUrls} />
-          <FullScreenText description = {description} />
+          <FullScreenText description = {description} address = {address}/>
           <Header text = "Comments" />
           <ColorBlock height = {10}></ColorBlock>
           {reviews.map((review, index) => (

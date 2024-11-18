@@ -1,8 +1,9 @@
 import React from 'react';
-import { TouchableOpacity, Image, StyleSheet, View, Text } from 'react-native';
+import { TouchableOpacity, Image, StyleSheet, View, Text, Linking } from 'react-native';
 import { useRouter } from 'expo-router';
 
-const Bookmark = ({ placeName, photoUrls, objectId }) => {
+
+const Bookmark = ({ placeName, photoUrls, address, objectId }) => {
   const router = useRouter();
 
   return (
@@ -14,7 +15,12 @@ const Bookmark = ({ placeName, photoUrls, objectId }) => {
     >
       <View style={styles.bookmarkContainer}>
         <Image source = {{ uri: photoUrls[0] }} style={styles.placePhoto} />
-        <Text style={styles.locationText}>{placeName}</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.locationText}>{placeName}</Text>
+            <View style = {styles.addressContainer}>
+                <Text style={styles.addressText}>{address}</Text>
+            </View>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -41,11 +47,25 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
   },
+  textContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    flex: 1,
+  },
+  addressContainer: {
+    justifyContent: 'flex-end',
+    flexGrow: 1,
+  },
   locationText: {
     fontSize: 20,
-    justifyContent: 'center',
-    flexDirection: 'row',
-
+    flexWrap: 'wrap',
+    flexShrink: 1,
+  },
+  addressText: {
+    fontSize: 12,
+    flexWrap: 'wrap',
+    flexShrink: 1,
+    fontStyle: 'italic',
   }
 });
 

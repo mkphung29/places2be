@@ -1,11 +1,13 @@
 [
   {
-    "objectId" : "0",
+    "objectId" : "Bobst-Library",
     "placeName": "Bobst Library",
     "photoUrls": [
-      "https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat",
-      "https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat",
-      "https://drive.google.com/uc?id=1M07dBHn4p-mZLSqlspLh_iFYkjZfiGat"
+      "https://s3.amazonaws.com/nyulibraries-www-assets/locations-images/elmer-holmes-bobst-library.jpg",
+      "https://mgmcgrath.com/wp-content/uploads/2013/12/nyu2.jpg",
+      "https://meet.nyu.edu/wp-content/uploads/2020/04/Bobst3-1.jpg",
+      "https://meet.nyu.edu/wp-content/uploads/2020/04/bobstinterior1-scaled.jpg",
+      "https://meet.nyu.edu/wp-content/uploads/2020/04/Bobst-2Up1.jpg"
     ],
     "description": "The Elmer Holmes Bobst Library, located at New York University (NYU) in Manhattan, serves as a central hub for academic research and study.",
     "reviews": [
@@ -17,31 +19,15 @@
     "address": "70 Washington Square S, New York, NY 10012"
   },
   {
-    "objectId" : "1",
-    "placeName": "Bobst: 6th Floor",
+    "objectId" : "Kimmel-Center-for-University-Life",
+    "placeName": "Kimmel Center for University Life",
     "photoUrls": [
-      "https://example.com/bobst-6th-floor-1.jpg",
-      "https://example.com/bobst-6th-floor-2.jpg",
-      "https://example.com/bobst-6th-floor-3.jpg"
+      "https://meet.nyu.edu/wp-content/uploads/2020/04/Kimmel-2up2.jpg",
+      "https://meet.nyu.edu/wp-content/uploads/2020/04/Skirball-1280.jpg",
+      "https://meet.nyu.edu/wp-content/uploads/2020/04/Kimmel-1280.jpg",
+      "https://meet.nyu.edu/wp-content/uploads/2020/04/Kimmel5.jpg"
     ],
-    "description": "The 6th floor of Bobst Library is known for being a quieter and more private space, perfect for those looking for a calm environment to study or do focused work.",
-    "reviews": [
-      "The 6th floor is perfect for studying in peace. There are plenty of desks and minimal distractions.",
-      "Great place to focus without the noise from other floors.",
-      "The environment here is ideal for those looking for a quiet study space during the day or night.",
-      "Love the natural light and quiet ambiance."
-    ],
-    "address": "70 Washington Square S, New York, NY 10012"
-  },
-  {
-    "objectId" : "2",
-    "placeName": "Kimmel",
-    "photoUrls": [
-      "https://example.com/kimmel-1.jpg",
-      "https://example.com/kimmel-2.jpg",
-      "https://example.com/kimmel-3.jpg"
-    ],
-    "description": "The Kimmel Center is a great spot for group study sessions, with a variety of lounges and study rooms available for students.",
+    "description": "The NYU Kimmel Center for University Life, located at 60 Washington Square South, is a 10-story facility on NYU’s Greenwich Village campus. It provides spaces for academic, cultural, and administrative activities, including performance venues, meeting rooms, study areas, and dining facilities. Notable features include the Eisner & Lubin Auditorium and the Rosenthal Pavilion, which host large events and conferences. The building also houses resources for student organizations and leadership programs, supporting various campus activities. Its design includes large windows offering views of Washington Square Park and the Manhattan skyline.",
     "reviews": [
       "Love the vibe here, it's perfect for group study. Lots of seating and places to plug in your devices.",
       "Great place to take breaks in between studying. The cafeteria is nearby, which makes it convenient.",
@@ -51,54 +37,73 @@
     "address": "60 Washington Square S, New York, NY 10012"
   },
   {
-    "objectId" : "3",
-    "placeName": "SRC",
+    "objectId": "Washington-Square-Park",
+    "placeName": "Washington Square Park",
     "photoUrls": [
-      "https://example.com/the-study-1.jpg",
-      "https://example.com/the-study-2.jpg",
-      "https://example.com/the-study-3.jpg"
+      "https://upload.wikimedia.org/wikipedia/commons/9/9c/Washington_Square_Arch-Isabella.jpg",
+      "https://images.ctfassets.net/1aemqu6a6t65/zkli875Jdk2Tc64OWza2j/07d35f7212aa15973f8c86706d606947/washingtonsquarepark_christopherpostlewaite_7318?w=1200&h=800&q=75",
+      "https://washingtonsqpark.org/wp-content/uploads/2018/01/Untitled-design-51-500x500.png"
     ],
-    "description": "A quiet, secluded spot for individual study located in the Student Resource Center, with comfy chairs and a peaceful atmosphere.",
+    "description": "Washington Square Park is a public park in the Greenwich Village neighborhood of Lower Manhattan, famous for its arch and vibrant social scene. It's a popular spot for both locals and tourists to relax, people-watch, and enjoy street performances.",
     "reviews": [
-      "A hidden gem for serious studying. I love the peace and quiet here.",
-      "Perfect spot for focused work or reading. I appreciate the calming environment.",
-      "The space is always clean and quiet, making it one of my top spots for studying on campus.",
-      "Great for when you need a distraction-free environment."
+      "A beautiful park, great for studying or taking a break from the city bustle. The arch is iconic and there are always interesting events happening.",
+      "A nice place to relax with friends or alone. I love how it brings people together.",
+      "It can get crowded, but it’s still one of the best places to hang out in NYC. The atmosphere is always lively and welcoming.",
+      "Perfect place to read a book or have a picnic. It’s really relaxing to just watch people and enjoy the greenery."
     ],
-    "address": "383 Lafayette St, New York, NY 10003"
+    "address": "Washington Square Park, New York, NY 10012"
   },
   {
-    "objectId" : "4",
-    "placeName": "Loft",
+    "objectId": "The-Metropolitan-Museum_of_Art",
+    "placeName": "The Metropolitan Museum of Art",
     "photoUrls": [
-      "https://example.com/tisch-loft-1.jpg",
-      "https://example.com/tisch-loft-2.jpg",
-      "https://example.com/tisch-loft-3.jpg"
+      "https://cdn.sanity.io/images/cctd4ker/production/df2942014531e122504b075c1fe6aa6f3f8a3ee5-5120x2880.jpg?w=3840&q=75&fit=clip&auto=format",
+      "https://cdn.sanity.io/images/cctd4ker/production/441e3b2a3fcc15e770c29d1458351be3697da1ac-5304x5304.jpg?w=3840&q=75&fit=clip&auto=format",
+      "https://cdn.sanity.io/images/cctd4ker/production/278a88bb42289e60035c3ff18fb03b92a13cf174-5120x5120.jpg?w=3840&q=75&fit=clip&auto=format",
+      "https://media.cntraveler.com/photos/55d362f337284fb1079ccc4b/16:9/w_2560%2Cc_limit/metropolitan-museum-of-art-new-york-city.jpg"
     ],
-    "description": "The Loft is a creative space at NYU Tisch School of the Arts where students can work on artistic projects or study in a more informal, yet inspiring environment.",
+    "description": "The Metropolitan Museum of Art, often referred to as 'The Met', is one of the largest and most prestigious art museums in the world. Located on the eastern edge of Central Park, the museum houses an extensive collection of art from different periods and cultures.",
     "reviews": [
-      "Amazing place for creative brainstorming and working on projects.",
-      "The relaxed environment makes studying here feel less like a chore.",
-      "Perfect mix of a collaborative atmosphere and personal study space.",
-      "Great for group work or individual projects that require creative space."
+      "A must-visit for any art lover! The museum has a vast collection, and the exhibits are always curated beautifully.",
+      "The Met is massive, so make sure to plan your visit well. There’s something for everyone here, from ancient history to modern art.",
+      "I always feel inspired after a visit. The museum’s atmosphere is calming, and the architecture is stunning.",
+      "It can get crowded, especially on weekends, but it’s totally worth the visit. I love the rooftop garden in the summer."
     ],
-    "address": "721 Broadway, New York, NY 10003"
+    "address": "1000 5th Ave, New York, NY 10028"
   },
   {
-    "objectId" : "5",
-    "placeName": "Cafe7",
+    "objectId": "Brooklyn-Bridge-Park",
+    "placeName": "Brooklyn Bridge Park",
     "photoUrls": [
-      "https://example.com/cafe-7-1.jpg",
-      "https://example.com/cafe-7-2.jpg",
-      "https://example.com/cafe-7-3.jpg"
+      "https://media.timeout.com/images/105683556/750/422/image.jpg",
+      "https://brooklynbridgepark.org/wp-content/uploads/2023/06/Brooklyn-Bridge-Park-Berm-CZ5A2265-scaled-1640x700-c-center.jpg",
+      "https://mvvainc.com/media/pages/projects/brooklyn-bridge-park/5bb7a815fe-1641407192/210516-1213.jpeg",
+      "https://lalh.org/wp-content/uploads/2012/10/brooklyn-bridge-park-3.jpg"
     ],
-    "description": "Cafe 7, located in the heart of NYU’s campus, is the perfect place for a casual study session with coffee and snacks readily available.",
+    "description": "Brooklyn Bridge Park is a waterfront park along the East River in Brooklyn, offering stunning views of the Manhattan skyline and the Brooklyn Bridge. The park features grassy lawns, sports fields, playgrounds, and cultural events.",
     "reviews": [
-      "Great place to grab coffee and get some studying done. The Wi-Fi is fast and the atmosphere is lively.",
-      "Nice mix of energy and focus. Not too quiet but not too loud either.",
-      "I love working here. The food is good, and the coffee keeps me going during long study sessions.",
-      "Perfect for a quick break from studying or a more casual study session."
+      "An amazing spot to take a walk and enjoy views of the skyline and Brooklyn Bridge. Great for outdoor activities or just relaxing by the water.",
+      "Perfect place for a picnic or to watch the sunset. It’s a beautiful park with a lot of space to explore.",
+      "I love the vibe here. The park is peaceful yet lively with people jogging, relaxing, and enjoying the scenery.",
+      "One of my favorite places in Brooklyn. I love coming here for the views and the calm atmosphere away from the city rush."
     ],
-    "address": "7 Washington Square East, New York, NY 10003"
+    "address": "Brooklyn Bridge Park, Brooklyn, NY 11201"
+  },
+  {
+    "objectId": "Central-Park",
+    "placeName": "Central Park",
+    "photoUrls": [
+      "https://s3.amazonaws.com/assets.centralparknyc.org/media/images/_1650x990_crop_center-center_none/Park-Aerial_20190604_03.jpg",
+      "https://images.squarespace-cdn.com/content/v1/57154d604d088e8318875db8/1461382312534-N21J943TIAYGWS68PAHR/2014-05-25-2202.jpg?format=1500w",
+      "https://fancyapple.com/wp-content/uploads/2021/08/0-1.jpg"
+    ],
+    "description": "Central Park is a large public park in the heart of Manhattan, offering a peaceful escape from the hustle and bustle of the city. It features walking paths, lakes, gardens, and iconic landmarks like Bethesda Terrace and Bow Bridge.",
+    "reviews": [
+      "I love walking through Central Park in any season. It's beautiful in the fall with the changing leaves, and the summer brings so many outdoor concerts and events.",
+      "A great place to escape the city noise. It’s huge, so there’s always something new to explore.",
+      "It can get crowded, but it’s still a relaxing place to unwind, especially around the lakes or near the bridges.",
+      "Central Park is iconic for a reason. It’s not just a park, it’s an experience. Whether you’re walking, biking, or just sitting, it’s magical."
+    ],
+    "address": "Central Park, New York, NY 10024"
   }
 ]

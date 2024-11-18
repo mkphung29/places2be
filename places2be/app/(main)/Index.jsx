@@ -3,7 +3,6 @@ import { StyleSheet, View } from 'react-native';
 import MapView, { UrlTile } from 'react-native-maps';
 
 
-
 export default function HomeScreen() {
   // MapLibreGL.setWellKnownTileServer(MapLibreGL.TileServers.MapLibre);
   // MapLibreGL.setAccessToken(null);

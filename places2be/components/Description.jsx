@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import * as Font from 'expo-font';
+import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 
 const Description = ({ description, address }) => (

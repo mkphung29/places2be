@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import * as Font from 'expo-font';
-import { ScrollView, Image, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { ScrollView, Image, StyleSheet, Text} from 'react-native';
 
 const HorizontalCarousel = ({ photoUrls }) => (
     <ScrollView horizontal pagingEnabled style={styles.photoContainer} showsHorizontalScrollIndicator={false}>
       {photoUrls.map((url, index) => (
-        <Image key={index} source={{ uri: url }} style={styles.placePhoto} />
+        <Image key={index} source={{uri : url}} style={styles.placePhoto} />
       ))}
+      <Text>   </Text>
     </ScrollView>
   );
 
@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
       borderColor: 'black',
       borderWidth: 1,
       marginLeft: 15,
-      
     },
   });
 
