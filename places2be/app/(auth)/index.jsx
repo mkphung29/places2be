@@ -2,11 +2,14 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
+import ColorBlock from '../../components/ColorBlock.jsx'
+
 
 export default function index() {
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: '#D1C4E9' }]}>
       <View style={styles.mainContainer}>
+        <ColorBlock height={60} />
         <Text style={styles.titleText}>Let's Get Started!</Text>
         <View>
           {/* Insert Logo here */}

@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'reac
 import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import ColorBlock from '../../components/ColorBlock.jsx'
 
 const CreateProfile = () => {
 /*
@@ -50,6 +51,7 @@ const CreateProfile = () => {
 
   return (
     <View style={[styles.container, { backgroundColor: '#D1C4E9' }]}>
+      <ColorBlock height={60} />
       <Text style={styles.title}>Create Your Profile</Text>
       <TextInput
         placeholder="Email Address"

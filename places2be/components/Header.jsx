@@ -1,26 +1,39 @@
 import React from 'react';
 import { TouchableOpacity, Image, StyleSheet, Text, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation
+import { useRouter } from 'expo-router';
 
 const Header = ({ text, includeSave, includeBack }) => {
-  const navigation = useNavigation(); // Get the navigation object
+  const navigation = useRouter(); // Get the navigation object
 
   return (
+
+    //Header
     <View style={styles.headerContainer}>
+
+      {/*Including a clickable back button which routes to the previous page*/}
       {includeBack && (
         <TouchableOpacity 
           style={styles.backButtonContainer}
-          onPress={() => navigation.goBack()} // Navigate back on press
+          onPress={() => navigation.back()} //Navigates backward on press of button
         >
+          {/*Setting up the back button icon*/}
           <Image
             source={require('../../places2be/assets/images/backArrow.png')}
             style={styles.backButton}
           />
         </TouchableOpacity>
       )}
+
+      {/*The text that should lie in the header*/}
       <Text style={styles.headerText}>{text}</Text>
+
+      {/*Including a clickable bookmark button*/}
       {includeSave && (
-        <TouchableOpacity style={styles.saveButtonContainer}>
+        <TouchableOpacity 
+          style={styles.saveButtonContainer}
+          //onPress unimplemented...
+        >
+          {/*Setting up the bookmark button icon*/}
           <Image
             source={require('../../places2be/assets/images/bookmark.png')}
             style={styles.saveButton}
@@ -40,9 +53,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     position: 'relative',
     borderColor: 'black',
-    borderWidth: 1,
-    marginLeft: -1,
-    marginRight: -1,
+    borderBottomWidth:1,
+    borderTopWidth:1,
     paddingBottom: 10,
   },
   headerText: {

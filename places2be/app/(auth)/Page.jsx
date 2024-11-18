@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { auth } from '../../FirebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { router } from 'expo-router';
+import ColorBlock from '../../components/ColorBlock.jsx'
 
 const Page = () => {
 
@@ -43,6 +44,7 @@ const Page = () => {
 
   return (
     <View style={[styles.container, { backgroundColor: '#D1C4E9' }]}>
+      <ColorBlock height={60} />
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <TouchableOpacity style={styles.backButton}></TouchableOpacity>

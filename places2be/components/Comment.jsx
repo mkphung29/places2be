@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import * as Font from 'expo-font';
+import React from 'react';
 import { Image, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 const Comment = ({ review, profilePicUrl, onLikePress }) => {
   const defaultProfilePicUrl = require('../../places2be/assets/images/defaultPFP.png');
-  const likeButtonUrl = require('../../places2be/assets/images/like.png');
+  const likeButtonUrl = require('../../places2be/assets/images/Heart.png');
 
   return (
     <View style = {styles.outerContainer}>
@@ -15,7 +14,7 @@ const Comment = ({ review, profilePicUrl, onLikePress }) => {
       />
       <View style={styles.reviewContent}>
         <Text style={styles.placeReviewText}>{review}</Text>
-        <TouchableOpacity onPress={onLikePress} style={styles.likeButton}>
+        <TouchableOpacity onPress={() => onLikePress} style={styles.likeButton}>
           <Image source={likeButtonUrl} style={styles.likeButtonImage} />
         </TouchableOpacity>
       </View>
@@ -54,14 +53,12 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
     },
     placeReviewText: {
-      //fontFamily: 'Bricolage',
       fontSize: 17,
-      //fontStyle: 'italic',
       flex: 1,
     },
     likeButtonImage: {
       marginLeft: 10,
-      width: 79 * (30 / 99),
+      width: 30,
       height: 30,
     },
   });
