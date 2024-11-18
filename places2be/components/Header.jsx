@@ -8,7 +8,7 @@ const Header = ({ text, includeSave, includeBack }) => {
   return (
 
     //Header
-    <View style={styles.headerContainer}>
+    <View style={styles.headerContainer}>gi
 
       {/*Including a clickable back button which routes to the previous page*/}
       {includeBack && (
