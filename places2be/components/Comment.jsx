@@ -5,7 +5,9 @@ const Comment = ({ review, profilePicUrl, onLikePress }) => {
   const defaultProfilePicUrl = require('../../places2be/assets/images/defaultPFP.png');
   const likeButtonUrl = require('../../places2be/assets/images/Heart.png');
 
+
   return (
+
     <View style = {styles.outerContainer}>
     <View style={styles.innerContainer}>
       <Image 

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { StyleSheet, View, Text } from 'react-native';
 
 export default function HomeScreen() {
@@ -11,3 +12,5 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     
 });
+=======
+>>>>>>> Stashed changes

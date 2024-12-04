@@ -8,7 +8,7 @@ const Header = ({ text, includeSave, includeBack }) => {
   return (
 
     //Header
-    <View style={styles.headerContainer}>gi
+    <View style={styles.headerContainer}>
 
       {/*Including a clickable back button which routes to the previous page*/}
       {includeBack && (
@@ -35,7 +35,7 @@ const Header = ({ text, includeSave, includeBack }) => {
         >
           {/*Setting up the bookmark button icon*/}
           <Image
-            source={require('../../places2be/assets/images/bookmark.png')}
+            source={require('../../places2be/assets/images/Bookmark.png')}
             style={styles.saveButton}
           />
         </TouchableOpacity>
@@ -46,6 +46,7 @@ const Header = ({ text, includeSave, includeBack }) => {
 
 const styles = StyleSheet.create({
   headerContainer: {
+    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

@@ -23,6 +23,7 @@ export default function index() {
           </TouchableOpacity>
           <View style={styles.loginContainer}>
             <Text style={styles.loginText}>Already have an account?</Text>
+            {/* /*HAELTYN EDITED THIS U NEED TO EDIT IT BACK BEFORE PUSH */ }
             <TouchableOpacity onPress={() => router.push('(auth)/Page')}> 
               <Text style={styles.loginButtonText}>Log In</Text>
             </TouchableOpacity>
