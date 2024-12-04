@@ -1,15 +1,7 @@
-<<<<<<< Updated upstream
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
-import React, { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
-import ColorBlock from '../../components/ColorBlock.jsx'
-=======
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView, ImageBackground } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState } from 'react';
 import { router } from 'expo-router'; 
->>>>>>> Stashed changes
 
 const CreateProfile = () => {
   const [email, setEmail] = useState('');
@@ -19,74 +11,6 @@ const CreateProfile = () => {
 
   const handleSubmit = () => {
     console.log("submitted");
-<<<<<<< Updated upstream
-    /*
-    if (password !== confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match');
-      return;
-    }
-
-    try {
-      // Create a new user with email and password
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      // Save additional user information to Firestore
-      await setDoc(doc(db, 'users', user.uid), {
-        userName: userName,
-        email: email,
-        places: [] // Initialize with an empty array for places
-      });
-
-      Alert.alert('Success', 'Profile created successfully!');
-    } catch (error) {
-      // Check for specific error codes and handle accordingly
-      if (error.code === 'auth/email-already-in-use') {
-        Alert.alert('Error', 'This email is already in use.');
-      } else if (error.code === 'auth/invalid-email') {
-        Alert.alert('Error', 'Invalid email address.');
-      } else if (error.code === 'auth/weak-password') {
-        Alert.alert('Error', 'Password is too weak.');
-      } else {
-        Alert.alert('Error', error.message);
-      }
-    }*/
-  };
-
-  return (
-    <View style={[styles.container, { backgroundColor: '#D1C4E9' }]}>
-      <ColorBlock height={60} />
-      <Text style={styles.title}>Create Your Profile</Text>
-      <TextInput
-        placeholder="Email Address"
-        value={email}
-        onChangeText={setEmail}
-        style={styles.inputField}
-        keyboardType="email-address"
-      />
-      <TextInput
-        placeholder="Username"
-        value={userName}
-        onChangeText={setUserName}
-        style={styles.inputField}
-      />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        style={styles.inputField}
-      />
-      <TextInput
-        placeholder="Confirm Password"
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-        style={styles.inputField}
-      />
-      <TouchableOpacity onPress={handleSubmit} style={styles.button}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
-    </View>
-=======
     router.push('/Discover');
   };
 
@@ -144,7 +68,6 @@ const CreateProfile = () => {
         </ScrollView>
       </SafeAreaView>
     </ImageBackground>
->>>>>>> Stashed changes
   );
 };
 
@@ -154,11 +77,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-<<<<<<< Updated upstream
-    padding: 20,
-    justifyContent: 'center',
-    backgroundColor: '#fff',
-=======
     backgroundColor: 'transparent', // Ensure transparency to see the background image
   },
   backButtonContainer: {
@@ -186,7 +104,6 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 400, 
     alignSelf: 'center', 
->>>>>>> Stashed changes
   },
   title: {
     fontSize: 24,

@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import React from 'react';
 import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 import MapView, { UrlTile } from 'react-native-maps';
@@ -179,4 +177,3 @@ const styles = StyleSheet.create({
     },
 });
 export default UserProfileScreen;
->>>>>>> Stashed changes
