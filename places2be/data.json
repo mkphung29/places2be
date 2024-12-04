@@ -19,8 +19,8 @@
     "address": "70 Washington Square S, New York, NY 10012"
   },
   {
-    "objectId": "Kimmel-Center-for-University-Life",
-    "placeName": "Kimmel Center for University Life",
+    "objectId": "Kimmel-Center",
+    "placeName": "Kimmel Center",
     "photoUrls": [
       "https://meet.nyu.edu/wp-content/uploads/2020/04/Kimmel-2up2.jpg",
       "https://meet.nyu.edu/wp-content/uploads/2020/04/Skirball-1280.jpg",
@@ -54,8 +54,8 @@
     "address": "Washington Square Park, New York, NY 10012"
   },
   {
-    "objectId": "The-Metropolitan-Museum_of_Art",
-    "placeName": "The Metropolitan Museum of Art",
+    "objectId": "The-MET",
+    "placeName": "The MET",
     "photoUrls": [
       "https://cdn.sanity.io/images/cctd4ker/production/df2942014531e122504b075c1fe6aa6f3f8a3ee5-5120x2880.jpg?w=3840&q=75&fit=clip&auto=format",
       "https://cdn.sanity.io/images/cctd4ker/production/441e3b2a3fcc15e770c29d1458351be3697da1ac-5304x5304.jpg?w=3840&q=75&fit=clip&auto=format",

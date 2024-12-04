@@ -55,7 +55,7 @@ const Page = () => {
               placeholder="Enter Password"
               onChangeText={setPassword}
             />
-            <TouchableOpacity style={styles.forgotPasswordButton}>
+            <TouchableOpacity style={styles.forgotPasswordButton} onPress={() => router.push("/ResetPassword")}>
               <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
             </TouchableOpacity>
             <TouchableOpacity 

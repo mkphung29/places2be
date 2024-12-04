@@ -7,6 +7,8 @@ export default function Layout() {
       <Stack.Screen name="(auth)/index" options={{ title: "Welcome", headerShown: false }} />
       <Stack.Screen name="(auth)/Page" options={{ title: "Sign In or Sign Up", headerShown: false }} />
       <Stack.Screen name="(auth)/CreateProfile" options={{ title: "Create Profile", headerShown: false }} />
+      <Stack.Screen name="(auth)/ResetPassword" options={{ title: "Reset Password", headerShown: false }} />
+
 
       {/* Main app screens */}
       <Stack.Screen name="(main)/Bookmarks" options={{ title: "Bookmarks", headerShown: false }} />

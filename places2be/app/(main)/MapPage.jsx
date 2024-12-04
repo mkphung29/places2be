@@ -1,7 +1,5 @@
-import react from 'react';
-import { TouchableOpacity, StyleSheet, View} from 'react-native';
+import { StyleSheet, View} from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import { useRouter } from 'expo-router';
 import Header from '../../components/Header.jsx';
 import NavBar from '../../components/NavBar.jsx'
 import ColorBlock from '../../components/ColorBlock.jsx'
