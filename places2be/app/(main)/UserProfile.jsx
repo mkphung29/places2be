@@ -94,7 +94,7 @@ const UserProfileScreen = () => {
     return(
         <View style={styles.container}>
             <ColorBlock height={60} />
-            <Header text={"@username"}/>
+            <Header text={"@username"} includeLogOut={true}/>
             <ColorBlock height={10} />
             <View style={{height:120,
                           width: '95%',

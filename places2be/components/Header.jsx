@@ -1,22 +1,20 @@
 import React from 'react';
 import { TouchableOpacity, Image, StyleSheet, Text, View } from 'react-native';
-import { useRouter } from 'expo-router';
+import { router, useRouter } from 'expo-router';
 
-const Header = ({ text, includeSave, includeBack }) => {
+const Header = ({ text, includeSave, includeBack, includeLogOut }) => {
   const navigation = useRouter(); // Get the navigation object
 
   return (
-
-    //Header
+    // Header
     <View style={styles.headerContainer}>
-
-      {/*Including a clickable back button which routes to the previous page*/}
+      {/* Including a clickable back button which routes to the previous page */}
       {includeBack && (
         <TouchableOpacity 
           style={styles.backButtonContainer}
-          onPress={() => navigation.back()} //Navigates backward on press of button
+          onPress={() => navigation.back()} // Navigates backward on press of button
         >
-          {/*Setting up the back button icon*/}
+          {/* Setting up the back button icon */}
           <Image
             source={require('../../places2be/assets/images/backArrow.png')}
             style={styles.backButton}
@@ -24,22 +22,30 @@ const Header = ({ text, includeSave, includeBack }) => {
         </TouchableOpacity>
       )}
 
-      {/*The text that should lie in the header*/}
+      {/* The text that should lie in the header */}
       <Text style={styles.headerText}>{text}</Text>
 
-      {/*Including a clickable bookmark button*/}
-      {includeSave && (
-        <TouchableOpacity 
-          style={styles.saveButtonContainer}
-          //onPress unimplemented...
-        >
-          {/*Setting up the bookmark button icon*/}
-          <Image
-            source={require('../../places2be/assets/images/Bookmark.png')}
-            style={styles.saveButton}
-          />
-        </TouchableOpacity>
-      )}
+      {/* Conditionally render either the bookmark or logout button */}
+      <View style={styles.rightButtonContainer}>
+        {includeSave && !includeLogOut && (
+          <TouchableOpacity>
+            {/* Setting up the bookmark button icon */}
+            <Image
+              source={require('../../places2be/assets/images/Bookmark.png')}
+              style={styles.rightButton}
+            />
+          </TouchableOpacity>
+        )}
+        {includeLogOut && !includeSave && (
+          <TouchableOpacity  onPress={() => router.push('/')}>
+            {/* Setting up the logout button icon */}
+            <Image
+              source={require('../../places2be/assets/images/LogOut.png')}
+              style={styles.rightButton}
+            />
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };
@@ -54,27 +60,24 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     position: 'relative',
     borderColor: 'black',
-    borderBottomWidth:1,
-    borderTopWidth:1,
-    paddingBottom: 10,
+    borderBottomWidth: 1,
+    borderTopWidth: 1,
   },
   headerText: {
     fontSize: 20,
     textAlign: 'center',
   },
-  saveButtonContainer: {
+  rightButtonContainer: {
     position: 'absolute',
-    right: 0,
-    paddingRight: 16,
+    right: 16,
   },
-  saveButton: {
+  rightButton: {
     width: 30,
     height: 30,
   },
   backButtonContainer: {
     position: 'absolute',
-    left: 0,
-    paddingLeft: 16,
+    left: 16,
   },
   backButton: {
     width: 30,

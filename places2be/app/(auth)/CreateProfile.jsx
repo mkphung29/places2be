@@ -74,6 +74,7 @@ const CreateProfile = () => {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    backgroundColor: '#D1C4E9'
   },
   container: {
     flex: 1,

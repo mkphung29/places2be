@@ -9,11 +9,8 @@ export default function Layout() {
       <Stack.Screen name="(auth)/CreateProfile" options={{ title: "Create Profile", headerShown: false }} />
 
       {/* Main app screens */}
-      
-      <Stack.Screen name="(main)/Index" options={{ title: "Home", headerShown: false }} />
       <Stack.Screen name="(main)/Bookmarks" options={{ title: "Bookmarks", headerShown: false }} />
       <Stack.Screen name="(main)/UserProfile" options={{ title: "User Profile", headerShown: false }} />
-      <Stack.Screen name="(main)/Place/[username]" options={{ title: "User Profile", headerShown: false }} />
       <Stack.Screen name="(main)/Place" options={{ title: "Place", headerShown: false }} />
       <Stack.Screen name="(main)/MapPage" options={{ title: "Map Page", headerShown: false }} />
       <Stack.Screen name="(main)/Discover" options={{ title: "Discover Page", headerShown: false}} />
@@ -21,3 +18,7 @@ export default function Layout() {
     </Stack>
   );
 }
+
+      //Add this for dynamic creation of user profile page.
+      //<Stack.Screen name="(main)/UserProfile/[username]" options={{ title: "User Profile", headerShown: false }} />
+

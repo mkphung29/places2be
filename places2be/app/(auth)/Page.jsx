@@ -2,8 +2,8 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState } from 'react';
-import { auth } from '../../FirebaseConfig';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+//import { auth } from '../../FirebaseConfig';
+//import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { router } from 'expo-router';
 import ColorBlock from '../../components/ColorBlock.jsx';
 
@@ -77,6 +77,7 @@ const Page = () => {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    backgroundColor: '#D1C4E9'
   },
   container: {
     flex: 1,
