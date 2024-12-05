@@ -1,65 +1,69 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView, ImageBackground, Modal } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { router } from 'expo-router'; 
-import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from './firebaseConfig'; // Adjust the import to your firebase config
+import { router } from 'expo-router';
+import { db, auth } from '../(auth)/firebaseConfig'; // Import Firebase
+import { updateDoc, arrayUnion, doc, increment } from 'firebase/firestore';
 
-const ResetPassword = () => {
-  const [email, setEmail] = useState('');
+const AddComment = ({ objectId }) => {
+  const [comment, setComment] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [modalVisible, setModalVisible] = useState(false); // For showing the modal
   const [successMessage, setSuccessMessage] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleSubmit = async () => {
-    // Reset error and success messages
     setErrorMessage('');
     setSuccessMessage('');
 
-    if (!email) {
-      setErrorMessage("Please enter your email.");
+    if (!comment) {
+      setErrorMessage("Please enter a comment:");
       setModalVisible(true);
       return;
     }
 
     try {
-      // Attempt to send the password reset email
-      await sendPasswordResetEmail(auth, email);
-      setSuccessMessage("Password reset email sent successfully.");
+      const currentUser = auth.currentUser;
+
+      // Reference to user's document
+      const userRef = doc(db, 'users', currentUser.uid);
+
+      // Reference to place's document
+      const placeRef = doc(db, 'places', objectId);
+
+      // Update the user's document by adding the comment to the 'comments' array
+      await updateDoc(userRef, {
+        comments: arrayUnion({objectId, comment}),
+        numberComments: increment(1),
+      });
+
+      // Update the place's document by adding the comment to the 'reviews' array
+      await updateDoc(placeRef, {
+        reviews: arrayUnion({uid: currentUser.uid, comment}),
+      });
+
+      setSuccessMessage("Comment added successfully!");
       setModalVisible(true);
-      setEmail(''); // Clear the input after sending the email
+      setComment(''); // Clear the comment input
     } catch (error) {
-      console.error("Error sending password reset email:", error.message);
-
-      // Define custom error messages based on the error code
-      let message = "An error occurred. Please try again.";
-      switch (error.code) {
-        case 'auth/invalid-email':
-          message = "Please enter a valid email address.";
-          break;
-        case 'auth/user-not-found':
-          message = "No account found with this email address.";
-          break;
-        default:
-          message = "Something went wrong. Please try again later.";
-          break;
-      }
-
-      setErrorMessage(message); // Set the error message
-      setModalVisible(true); // Show modal on error
+      console.error("Error adding comment:", error.message);
+      setErrorMessage("Something went wrong. Please try again.");
+      setModalVisible(true);
     }
   };
 
   const handleModalClose = () => {
-    setModalVisible(false); // Close the modal immediately
+    setModalVisible(false);
+    if (successMessage) {
+      router.back(); // Navigate back after a successful comment submission
+    }
   };
 
-  // UseEffect to track when modal is closed and navigate after modal is dismissed
   useEffect(() => {
     if (successMessage) {
-      router.back(); // Navigate to the previous screen only after the modal is closed
+      // Navigate back to previous screen after modal is closed
+      router.back();
     }
-  }, [modalVisible, successMessage]); // Trigger navigation when modal is hidden and success message is set
+  }, [modalVisible, successMessage]);
 
   return (
     <ImageBackground 
@@ -80,16 +84,16 @@ const ResetPassword = () => {
 
         <ScrollView contentContainerStyle={styles.scrollViewContainer}>
           <View style={styles.formContainer}>
-            <Text style={styles.title}>Reset Password</Text>
+            <Text style={styles.title}>Add a Comment</Text>
             <TextInput
-              placeholder="Email Address"
-              value={email}
-              onChangeText={setEmail}
+              placeholder="Write your comment here..."
+              value={comment}
+              onChangeText={setComment}
               style={styles.inputField}
-              keyboardType="email-address"
+              multiline
             />
             <TouchableOpacity onPress={handleSubmit} style={styles.button}>
-              <Text style={styles.buttonText}>Send Reset Email</Text>
+              <Text style={styles.buttonText}>Submit Comment</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -121,7 +125,7 @@ const ResetPassword = () => {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: '#D1C4E9'
+    backgroundColor: '#D1C4E9',
   },
   container: {
     flex: 1,
@@ -158,16 +162,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    color: '#374151'
+    color: '#374151',
   },
   inputField: {
-    height: 50,
+    height: 100,
     borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 10,
+    paddingVertical: 10,
     marginBottom: 20,
     backgroundColor: '#fff',
+    textAlignVertical: 'top', // Align text to the top for multiline input
   },
   button: {
     backgroundColor: '#FFDAB9',
@@ -210,4 +216,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ResetPassword;
+export default AddComment;

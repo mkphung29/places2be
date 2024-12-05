@@ -17,10 +17,14 @@ export default function Layout() {
       <Stack.Screen name="(main)/MapPage" options={{ title: "Map Page", headerShown: false }} />
       <Stack.Screen name="(main)/Discover" options={{ title: "Discover Page", headerShown: false}} />
       <Stack.Screen name="(main)/Place/[objectId]" options={{ title: "Place", headerShown: false }} />
+      <Stack.Screen name="(main)/AddPlace" options={{ title: "Add Place", headerShown: false }} />
+      <Stack.Screen name="(main)/AddComment" options={{ title: "Add Comment", headerShown: false }} />
+      <Stack.Screen name="(main)/AddComment/[objectId]" options={{ title: "Add Comment", headerShown: false }} />
+
+
     </Stack>
   );
 }
 
       //Add this for dynamic creation of user profile page.
-      //<Stack.Screen name="(main)/UserProfile/[username]" options={{ title: "User Profile", headerShown: false }} />
 

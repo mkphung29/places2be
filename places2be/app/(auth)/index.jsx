@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, LogBox } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
@@ -6,6 +6,7 @@ import ColorBlock from '../../components/ColorBlock.jsx'
 
 
 export default function index() {
+  LogBox.ignoreAllLogs(true);
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: '#D1C4E9' }]}>
       <View style={styles.mainContainer}>

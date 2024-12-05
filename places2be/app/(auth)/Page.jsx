@@ -1,22 +1,66 @@
-
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ImageBackground, Modal } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import React, { useState } from 'react';
-//import { auth } from '../../FirebaseConfig';
-//import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { router } from 'expo-router';
-import ColorBlock from '../../components/ColorBlock.jsx';
+// Firebase imports
+import { auth } from './firebaseConfig'; // Make sure the correct path is used for firebaseConfig
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Page = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
 
   const handleAuth = async () => {
     setLoading(true);
-    console.log("logged in!");
-    router.push('/Discover');
+    setErrorMessage(''); // Reset error message
+    try {
+      if (isLogin) {
+        // Login user
+        await signInWithEmailAndPassword(auth, email, password);
+        console.log("Logged in!");
+        router.push('/Discover'); // Navigate to Discover screen on successful login
+      } else {
+        // Sign up logic can be added here if needed
+        console.log("Sign up functionality not yet implemented.");
+      }
+    } catch (error) {
+      console.error(error.message);
+
+      // Map Firebase error codes to custom error messages
+      let message = "An error occurred. Please try again.";
+      switch (error.code) {
+        case 'auth/invalid-email':
+          message = "Please enter a valid email address.";
+          break;
+        case 'auth/user-not-found':
+          message = "No account found with this email. Please check and try again.";
+          break;
+        case 'auth/wrong-password':
+          message = "Incorrect password. Please try again.";
+          break;
+        case 'auth/too-many-requests':
+          message = "Too many failed attempts. Please try again later.";
+          break;
+        case 'auth/missing-email':
+          message = "Email is required.";
+          break;
+        case 'auth/operation-not-allowed':
+          message = "This operation is not allowed. Please contact support.";
+          break;
+        default:
+          message = "Something went wrong. Please try again later.";
+          break;
+      }
+
+      setErrorMessage(message); // Set the mapped error message
+      setModalVisible(true); // Show modal on error
+    } finally {
+      setLoading(false); // Stop loading spinner
+    }
   };
 
   return (
@@ -58,6 +102,7 @@ const Page = () => {
             <TouchableOpacity style={styles.forgotPasswordButton} onPress={() => router.push("/ResetPassword")}>
               <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
             </TouchableOpacity>
+
             <TouchableOpacity 
               style={[styles.authButton, loading && { opacity: 0.6 }]} 
               onPress={handleAuth} 
@@ -69,6 +114,26 @@ const Page = () => {
             </TouchableOpacity>
           </View>
         </View>
+
+        {/* Modal for error messages */}
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => setModalVisible(false)}
+        >
+          <View style={styles.modalBackground}>
+            <View style={styles.modalContainer}>
+              <Text style={styles.modalText}>{errorMessage}</Text>
+              <TouchableOpacity 
+                style={styles.modalButton}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={styles.modalButtonText}>Close</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
       </View>
     </ImageBackground>
   );
@@ -81,7 +146,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: 'transparent', // Ensures the background image is visible
+    backgroundColor: 'transparent',
   },
   safeArea: { flex: 1 },
   header: { flexDirection: 'row', justifyContent: 'flex-start', padding: 10 },
@@ -126,6 +191,40 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#4B5563',
     textAlign: 'center',
+  },
+  errorMessage: {
+    color: 'black',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  modalBackground: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+  },
+  modalContainer: {
+    width: 300,
+    padding: 20,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  modalText: {
+    fontSize: 16,
+    color: 'black',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  modalButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: '#FFDAB9',
+    borderRadius: 5,
+  },
+  modalButtonText: {
+    color: '#4B5563',
+    fontWeight: 'bold',
   },
   toggleText: { textAlign: 'center', color: '#4B5563', marginTop: 12 },
 });

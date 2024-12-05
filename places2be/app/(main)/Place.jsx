@@ -6,21 +6,21 @@ import HorizontalCarousel from '../../components/HorizontalCarousel.jsx';
 import FullScreenText from '../../components/FullScreenText.jsx';
 import ColorBlock from '../../components/ColorBlock.jsx';
 
-const Place = ({ placeName, photoUrls, description, reviews, address }) => {
+const Place = ({ placeName, photoUrls, description, reviews, address, objectId }) => {
     return (
       <View style = {{backgroundColor: '#D1C4E9'}}>
         <ColorBlock height = {60}></ColorBlock>
-        <Header text = {placeName} includeSave = {true} includeBack = {true}/>
+        <Header text = {placeName} includeSave = {true} includeBack = {true} objectId = {objectId}/>
         <ScrollView>
           <ColorBlock height = {10}></ColorBlock>
           <HorizontalCarousel photoUrls = {photoUrls} />
           <FullScreenText description = {description} address = {address}/>
-          <Header text = "Comments" />
+          <Header text = "Comments" objectId = {objectId}/>
           <ColorBlock height = {10}></ColorBlock>
           {reviews.map((review, index) => (
-            <Comment key = {index} review = {review}/>
+            <Comment key = {index} review = {review.comment}/>
           ))}
-          <ColorBlock height = {130}></ColorBlock>
+          <ColorBlock height = {300}></ColorBlock>
         </ScrollView>
       </View>
      
