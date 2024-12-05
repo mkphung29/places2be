@@ -82,7 +82,6 @@ const AddComment = ({ objectId }) => {
           </TouchableOpacity>
         </View>
 
-        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
           <View style={styles.formContainer}>
             <Text style={styles.title}>Add a Comment</Text>
             <TextInput
@@ -96,7 +95,6 @@ const AddComment = ({ objectId }) => {
               <Text style={styles.buttonText}>Submit Comment</Text>
             </TouchableOpacity>
           </View>
-        </ScrollView>
       </SafeAreaView>
 
       {/* Modal for error or success messages */}
@@ -130,6 +128,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent', // Ensure transparency to see the background image
+    paddingTop: 40,
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   backButtonContainer: {
     position: 'absolute', 

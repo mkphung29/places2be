@@ -95,7 +95,6 @@ const CreateProfile = () => {
           </TouchableOpacity>
         </View>
 
-        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
           <View style={styles.formContainer}>
             <Text style={styles.title}>Create Your Profile</Text>
             <TextInput
@@ -129,7 +128,6 @@ const CreateProfile = () => {
               <Text style={styles.buttonText}>Sign Up</Text>
             </TouchableOpacity>
           </View>
-        </ScrollView>
       </SafeAreaView>
 
       {/* Modal for error messages */}
@@ -155,11 +153,15 @@ const CreateProfile = () => {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: '#D1C4E9'
+    backgroundColor: '#D1C4E9',
   },
   container: {
     flex: 1,
     backgroundColor: 'transparent', 
+    paddingTop: 40,
+    paddingLeft: 16,
+    paddingRight: 16,
+
   },
   backButtonContainer: {
     position: 'absolute', 

@@ -113,10 +113,9 @@ const AddPlace = () => {
           </TouchableOpacity>
         </View>
 
-        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
           <View style={styles.formContainer}>
             <Text style={styles.title}>Add a New Place</Text>
-
+            <ScrollView showsVerticalScrollIndicator={false}>
             <TextInput
               placeholder="Place Name"
               value={placeName}
@@ -158,8 +157,11 @@ const AddPlace = () => {
             <TouchableOpacity onPress={handleSubmit} style={styles.button}>
               <Text style={styles.buttonText}>Submit Place</Text>
             </TouchableOpacity>
+            <Text>
+              {"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"} {/* Allows user to scroll to be able to see all fields over keyboard */}
+            </Text>
+            </ScrollView>
           </View>
-        </ScrollView>
       </SafeAreaView>
 
       {/* Modal for error or success messages */}
@@ -193,6 +195,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
+    paddingTop: 40,
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   backButtonContainer: {
     position: 'absolute',
@@ -213,10 +218,12 @@ const styles = StyleSheet.create({
   scrollViewContainer: {
     flexGrow: 1,
     justifyContent: 'center',
+    paddingTop: 1000,
     padding: 20,
   },
   formContainer: {
     width: '100%',
+    height: '100%',
     maxWidth: 400,
     alignSelf: 'center',
   },

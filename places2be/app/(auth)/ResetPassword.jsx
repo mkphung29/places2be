@@ -78,7 +78,6 @@ const ResetPassword = () => {
           </TouchableOpacity>
         </View>
 
-        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
           <View style={styles.formContainer}>
             <Text style={styles.title}>Reset Password</Text>
             <TextInput
@@ -92,7 +91,6 @@ const ResetPassword = () => {
               <Text style={styles.buttonText}>Send Reset Email</Text>
             </TouchableOpacity>
           </View>
-        </ScrollView>
       </SafeAreaView>
 
       {/* Modal for error or success messages */}
@@ -126,6 +124,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent', // Ensure transparency to see the background image
+    paddingTop: 40,
+    paddingLeft: 16,
+    paddingRight: 16,
   },
   backButtonContainer: {
     position: 'absolute', 
@@ -168,6 +169,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 20,
     backgroundColor: '#fff',
+    
   },
   button: {
     backgroundColor: '#FFDAB9',
