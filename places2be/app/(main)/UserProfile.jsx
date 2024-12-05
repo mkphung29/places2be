@@ -106,7 +106,7 @@ const UserProfileScreen = () => {
     <View style={styles.container}>
       <ColorBlock height={60} />
       <Header text={`@${username}`} includeLogOut = {true} />
-      <ScrollView style={{width: "95%"}}>
+      <ScrollView style={{width: "95%"}} showsVerticalScrollIndicator= {false }>
       <ColorBlock height={10} />
       <View style={{ height: 120, width: '100%', borderWidth: 1, borderRadius: 16, backgroundColor: 'white' }}>
         <ProfileInfo numberFriends={numberFriends} numberComments={numberComments} numberSaves={numberSaves} />
@@ -136,7 +136,7 @@ const SavedPlaces = ({ places, username }) => {
       </View>
 
       <View style={{ flex: 1 }}>
-        <ScrollView style={{ flex: 1, borderRadius: 16, paddingTop: 10 }}>
+        <ScrollView style={{ flex: 1, borderRadius: 16, paddingTop: 10 }} showsVerticalScrollIndicator={false}>
           {places.map(({ placeName, photoUrls, address, objectId }, index) => (
             <Bookmark key={index} placeName={placeName} photoUrls={photoUrls} address={address} objectId={objectId} />
           ))}

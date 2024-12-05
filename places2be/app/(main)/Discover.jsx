@@ -48,8 +48,8 @@ const DiscoverScreen = () => {
       <ColorBlock height={60} />
       <Header text={"Discover"} />
 
-      <ScrollView style={styles.list}>
-        {places.map(({ placeName, photoUrls, objectId }, index) => (
+      <ScrollView style={styles.list} showsVerticalScrollIndicator={false}>
+      {places.map(({ placeName, photoUrls, objectId }, index) => (
           <Card key={index} placeName={placeName} photoUrls={photoUrls} objectId={objectId} />
         ))}
         <ColorBlock height={100} />

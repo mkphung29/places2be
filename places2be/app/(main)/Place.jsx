@@ -11,7 +11,7 @@ const Place = ({ placeName, photoUrls, description, reviews, address, objectId }
       <View style = {{backgroundColor: '#D1C4E9'}}>
         <ColorBlock height = {60}></ColorBlock>
         <Header text = {placeName} includeSave = {true} includeBack = {true} objectId = {objectId}/>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <ColorBlock height = {10}></ColorBlock>
           <HorizontalCarousel photoUrls = {photoUrls} />
           <FullScreenText description = {description} address = {address}/>
