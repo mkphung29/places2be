@@ -40,7 +40,7 @@ const Page = () => {
       Alert.alert('Authentication Error', error.message);
     }*/
    
-    router.push('/Bookmarks');
+    router.push('/Discover');
   };
 
   return (

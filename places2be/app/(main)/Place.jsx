@@ -6,7 +6,7 @@ import HorizontalCarousel from '../../components/HorizontalCarousel.jsx';
 import FullScreenText from '../../components/FullScreenText.jsx';
 import ColorBlock from '../../components/ColorBlock.jsx';
 
-const Place = ({ placeName, photoUrls, description, reviews }) => {
+const Place = ({ placeName, photoUrls, description, reviews, address }) => {
     return (
       <View style = {{backgroundColor: '#D1C4E9'}}>
         <ColorBlock height = {60}></ColorBlock>

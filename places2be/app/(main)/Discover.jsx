@@ -1,62 +1,56 @@
 import React from 'react';
-import { FlatList, View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import { FlatList, View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { router } from 'expo-router'; 
+import Header from '../../components/Header.jsx';
+import ColorBlock from '../../components/ColorBlock.jsx';
+import placeData from '../../data.json';  // Import data.json
+import NavBar from '../../components/NavBar.jsx';
+// import { ImageBackground } from 'react-native-web';
+// import LinearGradient from 'react-native-linear-gradient';
 
-const DATA = [
-    {   id: 1,
-        name: "Paulson Center",
-        image: 'https://heintges.com/wp-content/uploads/2023/07/181-Mercer_15_Edit-scaled.jpg'
-    },
-    {
-        id: 2,
-        name: 'Blank Street Coffee',
-        image: 'https://res.cloudinary.com/blank-street/image/upload/w_1200,h_900,c_lfill,g_auto/DSC_03799_3dcad96a9f.webp?_a=BAMADKXu0'
-    },
-    {
-        id: 3,
-        name: 'Bobst Library',
-        image: 'https://lh3.googleusercontent.com/p/AF1QipPp5o5aptOYX_5u774Ro62HYyjgFX2T0AD1ZmOU=s1360-w1360-h1020'
-    },
-    {
-        id: 4,
-        name: 'Mille-Feuille Cafe',
-        image: 'https://cdn.prod.website-files.com/6202f9a976f5aa6392313a39/621d3c871c2195e31e370c61_Lora_NYC_1019-294-of-117-683x1024.jpeg'
-    },
-
-];
+const Card = ({placeName, photoUrls, objectId}) => {
+  return(
+    <TouchableOpacity
+      onPress={() => {
+        router.push(`(main)/Place/${objectId}`);
+      }}>
+      <View style={styles.card}>
+        <Image source= {{uri: photoUrls[0] }} style={styles.image}/>
+        {/* <LinearGradient
+         colors={['#00000000', '#000000']} 
+         style={{height : '100%', width : '100%'}}>
+       
+        </LinearGradient> */}
+        
+        <Text style={styles.title}>{placeName}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+}
 
 const DiscoverScreen = () => {
-    const renderItem = ({item}) => (
-        <LinearGradient
-            colors={['#FF0000','#cb2ecb']}>
-            <TouchableOpacity style={styles.card}>
-            <Image source={{ uri: item.image }} style={styles.image} />
-            <Text style={styles.title}>{item.title}</Text>
-            </TouchableOpacity>
-        </LinearGradient>
-        
-    );
-
     return(
-        <View style={styles.container}>
-            <FlatList
-                data={DATA}
-                keyExtractor={(item) => item.id}
-                renderItem={renderItem}
-                contentContainerStyle={styles.list}
-                showsVerticalScrollIndicator={false}
-            />
-        </View>
-    ); 
+        <View style={{ backgroundColor: '#D1C4E9', flex: 1 , height: '100%', width: '100%'}}>
+        <ColorBlock height={60} />
+        <Header text={"Discover"} includeBack={true}/>
+
+        <ScrollView style={styles.list}>
+            {placeData.map(({placeName, photoUrls, objectId}, index) => (
+              <Card key={index} placeName={placeName} photoUrls={photoUrls} objectId={objectId}/>
+            ))}
+        </ScrollView>
+        <NavBar/>
+      </View>
+    );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#D1C4E9',
-    },
+    // container: {
+    //     flex: 1,
+    //     backgroundColor: '#D1C4E9',
+    // },
     list: {
-        paddingHorizontal: 16,
+        paddingHorizontal: 40,
         paddingVertical: 8,
     },
     card: {
@@ -70,7 +64,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5,
         borderWidth: 5,
-        borderColor: 'pink',
+        borderColor: '#FFDAB9',
     },
     image: {
         width: '100%',

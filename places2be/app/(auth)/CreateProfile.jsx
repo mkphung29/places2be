@@ -49,7 +49,7 @@ const CreateProfile = () => {
         Alert.alert('Error', error.message);
       }
     }*/
-      router.push('/Bookmarks');
+      router.push('/Discover');
   };
 
   return (

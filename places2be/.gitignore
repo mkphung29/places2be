@@ -1,4 +1,6 @@
 node_modules/
+package.json
+package-lock.json
 .expo/
 dist/
 npm-debug.*
@@ -9,8 +11,6 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-package.json
-package-lock.json
 .env
 
 

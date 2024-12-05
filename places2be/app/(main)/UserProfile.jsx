@@ -1,25 +1,26 @@
 import React from 'react';
-import {View, Button, Text, StyleSheet, Image, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, Image, ScrollView} from 'react-native';
 import MapView, { UrlTile } from 'react-native-maps';
 import { SearchBar } from 'react-native-screens';
-import NavBar from '/Users/haelynryoo/places2be/places2be/components/NavBar.jsx';
+import Header from '../../components/Header.jsx';
+import ColorBlock from '../../components/ColorBlock.jsx';
+import NavBar from '../../components/NavBar.jsx';
+import { TouchableOpacity } from 'react-native';
+import Bookmark from '../../components/Bookmark.jsx';
+import placeData from '../../data.json';  // Import data.json
+import S from '../../components/Stats.jsx';
 
 
-//USER Profile pic and username
-const ShowUsername = () => {
-    return(
-        <View>
-    <Text style={styles.usernameText}>@userProfile</Text>    
-</View>
-    );
-};
+
+
+
 const ShowProfilePic = () => {
     return(
         <View style = {styles.profilePicContainer}>
             <Image 
-    source={require('/Users/haelynryoo/places2be/places2be/assets/images/DefaultProfilePic.png')}
-    style = {styles.profilePic}
-    />
+                source={require('../../assets/images/defaultPFP.png')}
+                style = {styles.profilePic}
+                />
         </View>
     );
 };
@@ -38,7 +39,7 @@ const Map = () => {
         <View style={styles.mapContainer}>
         <MapView
             style={styles.map}
-            styleUrl={`https://api.maptiler.com/maps/streets-v2-dark/style.json?key=${process.env.MAPTILER_API_KEY}`}
+            styleUrl={`https://api.maptiler.com/maps/streets-v2-dark/style.json?key=Qr3kbzWfBOmee8MB9sfO`}
             initialRegion={initRegion}
             zoomEnabled={true}
             scrollEnabled={true}
@@ -48,46 +49,21 @@ const Map = () => {
     );
 };
 
-//Saved Places:
-const Place = ({ locationName, photoUrls, description, reviews }) => {
-    return (
-      <View>
-        <Header text = {locationName} includeSave = {true}/>
-        <ScrollView>
-          <HorizontalCarousel photoUrls = {photoUrls} />
-          <FullScreenText description = {description} />
-          <Header text = "Comments" />
-          {reviews.map((review, index) => (
-            <Comment key = {index} review = {review}/>
-          ))}
-          <Text>
-            {"\n"}
-          </Text>
-        </ScrollView>
-      </View>
-      
-    );
-};
-const SavedPlaces = () => {
-    return(
-        <ScrollView style={{backgroundColor: '#FFDAB9',}}>
-
-        </ScrollView>
-    );
-};
 
 const ProfileInfo = () => {
     return(
         <View style = {styles.profInfoCont}>
             <ShowProfilePic/>
-            <View style={{flex:1,}}>
-                <ShowUsername/>
+            <View style={{flex:1, justifyContent: 'space-evenly', alignItems: 'flex-start'}}>
                 <View style={{flexDirection:'row',
                             justifyContent: 'space-around',
+                            padding: 5,
+                            right:10
                             }}>
-                    <Text style={{padding: '10px',}}> Friends</Text>
-                    <Text style={{padding: '10px',}}>Saves</Text>
-                    <Text style={{padding: '10px',}}>Comments</Text>
+                    <S catergory={'Friends'} number={'0'} />
+                    <S catergory={'Comments'} number={'0'} />
+                    <S catergory={'Saves'} number={'0'} />
+                    
                 </View>
                 
             </View>
@@ -95,15 +71,46 @@ const ProfileInfo = () => {
         </View>
     );
 };
-
+const SavedPlaces = () => {
+    return(
+        <View style={styles.placesCont}>
+            <View style={{borderBottomWidth: 1, backgroundColor: '#FFDAB9', borderTopLeftRadius:16, borderTopRightRadius:16}}> 
+            <Text style={{textAlign: 'center', padding: 3, fontSize: 20,marginBottom:3,}}>@Username's Bookmarks</Text>
+            </View>
+            
+            <View style={{flex: 1, paddingTop: 10}}>            
+            <ScrollView style={{flex:1, borderRadius:16,}}>
+                {placeData.map(({ placeName, photoUrls, address, objectId }, index) => (
+                <Bookmark key={index} placeName={placeName} photoUrls={photoUrls} address = {address} objectId = {objectId} />
+        ))}
+            </ScrollView>
+            </View>  
+        </View>
+    );
+}
 //Put together all the components
 const UserProfileScreen = () => {
     return(
         <View style={styles.container}>
-            <ProfileInfo/>
+            <ColorBlock height={60} />
+            <Header text={"@username"} includeBack={true}/>
+            <ColorBlock height={10} />
+            <View style={{height:120,
+                          width: '95%',
+                          borderWidth: 1,
+                          borderRadius: 16,
+                          backgroundColor: 'white',
+                            }}>
+                <ProfileInfo/>
+            </View>
+            <ColorBlock height={10} />
             <Map />
-            <NavBar />
+            <ColorBlock height={10} />
+            <SavedPlaces />
+            <ColorBlock height={10} />
+            <NavBar styles= {styles.navBar}/>
         </View>
+
         
     );
 };
@@ -122,9 +129,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-start',
     },
-
-
-
     usernameText: {
         textAlign:'center',
         fontSize: 20,
@@ -134,18 +138,19 @@ const styles = StyleSheet.create({
     profilePic: {
         height: '100%', 
         width: '100%',
-        resizeMode: 'cover',
+        // resizeMode: 'cover',
     },
     profilePicContainer: {
-        height: 100,
-        width: 100,
+        height: 120,
+        width: 120,
         borderRadius: 50,
         overflow: 'hidden',
+        padding: 20,
         
     },
     mapContainer: {
         width: '95%',
-        height: 300,
+        height: 180,
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 1,
@@ -157,6 +162,17 @@ const styles = StyleSheet.create({
         height: '100%',
         borderRadius: 16,
     },
-
+    navBar: {
+        alignSelf: 'flex-end',
+    },
+    placesCont: {
+        flexDirection: 'column',
+        flex: 1,
+        width: '95%',
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderRadius: 16,
+        
+    },
 });
 export default UserProfileScreen;

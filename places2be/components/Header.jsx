@@ -8,7 +8,7 @@ const Header = ({ text, includeSave, includeBack }) => {
   return (
 
     //Header
-    <View style={styles.headerContainer}>gi
+    <View style={styles.headerContainer}>
 
       {/*Including a clickable back button which routes to the previous page*/}
       {includeBack && (
@@ -46,6 +46,7 @@ const Header = ({ text, includeSave, includeBack }) => {
 
 const styles = StyleSheet.create({
   headerContainer: {
+    width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

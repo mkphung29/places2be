@@ -1,0 +1,23 @@
+{
+  "name": "places2be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@react-native-community/cli": "^15.1.1",
+    "expo": "^45.0.8",
+    "metro": "^0.81.0",
+    "react-native": "^0.76.1"
+  },
+  "devDependencies": {
+    "typescript": "~4.3.5",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.67.6"
+  }
+}
