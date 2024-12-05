@@ -81,7 +81,7 @@ const Header = ({ text, includeSave, objectId, includeBack, includeLogOut, inclu
   const handleAddClick = () => {
     if (text === 'Discover') {
       // Navigate to AddPlace.jsx if the header is "Discover"
-      navigation.push('AddPlace');
+      navigation.push('(main)/AddPlace');
     } else if (text === 'Comments') {
       // Navigate to AddComment.jsx if the header is "Comments"
       navigation.push(`AddComment/${objectId}`);

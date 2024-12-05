@@ -54,7 +54,7 @@ const AddComment = ({ objectId }) => {
   const handleModalClose = () => {
     setModalVisible(false);
     if (successMessage) {
-      router.back(); // Navigate back after a successful comment submission
+      router.push("(main)/Place/${objectId}"); // Navigate back after a successful comment submission
     }
   };
 
