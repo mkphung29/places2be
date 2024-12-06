@@ -20,6 +20,8 @@ export default function Layout() {
       <Stack.Screen name="(main)/AddPlace" options={{ title: "Add Place", headerShown: false }} />
       <Stack.Screen name="(main)/AddComment" options={{ title: "Add Comment", headerShown: false }} />
       <Stack.Screen name="(main)/AddComment/[objectId]" options={{ title: "Add Comment", headerShown: false }} />
+      <Stack.Screen name="(main)/AddPhoto" options={{ title: "Add Photo", headerShown: false }} />
+      <Stack.Screen name="(main)/AddPhoto/[objectId]" options={{ title: "Add Photo", headerShown: false }} />
 
 
     </Stack>

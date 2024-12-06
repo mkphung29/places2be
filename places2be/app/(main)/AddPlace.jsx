@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView,
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 import { db, auth } from '../(auth)/firebaseConfig';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, increment, updateDoc, arrayUnion } from 'firebase/firestore';
 
 const AddPlace = () => {
   const [placeName, setPlaceName] = useState('');
@@ -49,10 +49,10 @@ const AddPlace = () => {
         setModalVisible(true);
         return;
       }
-
+    
       // Generate objectId by replacing spaces in placeName with hyphens
       const objectId = placeName.trim().replace(/\s+/g, '-');
-
+    
       // Prepare data for Firestore, including objectId as a field
       const placeData = {
         objectId, // Add objectId field
@@ -69,25 +69,36 @@ const AddPlace = () => {
         ],
         createdAt: new Date(),
       };
-
+    
       // Add new place to Firestore with the objectId as document name
       await setDoc(doc(db, 'places', objectId), placeData);
-
+    
+      // Update user's document with the new comment and increment comment count
+      const userRef = doc(db, 'users', currentUser.uid);
+      await updateDoc(userRef, {
+        comments: arrayUnion({ objectId, comment }),
+        numberComments: increment(1),
+      });
+    
+      // Provide success feedback
       setSuccessMessage("Place added successfully!");
       setModalVisible(true);
-
+    
       // Clear form fields
       setPlaceName('');
       setPhotoUrls(['', '']);
       setAddress('');
       setDescription('');
       setComment('');
+    
     } catch (error) {
       console.error("Error adding place:", error.message);
       setErrorMessage("Something went wrong. Please try again.");
       setModalVisible(true);
     }
+    
   };
+  
 
   const handleModalClose = () => {
     setModalVisible(false);

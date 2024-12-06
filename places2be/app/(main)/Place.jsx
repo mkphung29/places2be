@@ -20,7 +20,7 @@ const Place = ({ placeName, photoUrls, description, reviews, address, objectId }
           {reviews.map((review, index) => (
             <Comment key = {index} review = {review.comment}/>
           ))}
-          <ColorBlock height = {300}></ColorBlock>
+          <ColorBlock height = {120}></ColorBlock>
         </ScrollView>
       </View>
      

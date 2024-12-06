@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router';
 import { db, auth } from '../app/(auth)/firebaseConfig'; // Ensure Firebase is initialized
 import { doc, updateDoc, arrayUnion, arrayRemove, increment, setDoc, collection, getDoc } from "firebase/firestore";
 
-const Header = ({ text, includeSave, objectId, includeBack, includeLogOut, includeAdd }) => {
+const Header = ({ text, includeSave, objectId, includeBack, includeLogOut }) => {
   const navigation = useRouter();
   const [isBookmarked, setIsBookmarked] = useState(false);
 
@@ -31,6 +31,10 @@ const Header = ({ text, includeSave, objectId, includeBack, includeLogOut, inclu
   }, [objectId]);
 
   // Handle save/un-save button click
+  const handleAddPhotoClick = async () => {
+    navigation.push(`AddPhoto/${objectId}`);
+  }
+
   const handleSaveClick = async () => {
     const currentUser = auth.currentUser;
 
@@ -103,6 +107,18 @@ const Header = ({ text, includeSave, objectId, includeBack, includeLogOut, inclu
         </TouchableOpacity>
       )}
 
+<View style={styles.addPhotoButtonContainer}>
+  {text === "Comments" && (
+    <TouchableOpacity onPress={handleAddPhotoClick}>
+      <Image
+        source={require('../../places2be/assets/images/AddPhoto.png')}
+        style={styles.addPhotoButton}
+      />
+    </TouchableOpacity>
+  )}
+</View>
+
+
       {/* Header Text */}
       <Text style={styles.headerText}>{text}</Text>
 
@@ -138,6 +154,9 @@ const Header = ({ text, includeSave, objectId, includeBack, includeLogOut, inclu
             )}
           </>
         )}
+        <View style={styles.backButtonContainer}>
+
+        </View>
       </View>
     </View>
   );
@@ -174,6 +193,14 @@ const styles = StyleSheet.create({
     left: 16,
   },
   backButton: {
+    width: 30,
+    height: 30,
+  },
+  addPhotoButtonContainer: {
+    position: 'absolute',
+    left: 16,
+  },
+  addPhotoButton: {
     width: 30,
     height: 30,
   },
